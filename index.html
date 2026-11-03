@@ -1,75 +1,78 @@
 <!doctype html>
 <html lang="ja">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#172b3a">
-<title>PAIR CONSENT — 相互確認</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#172b3a"><title>PAIR CONSENT — 相互確認</title>
 <style>
-:root{--ink:#172b3a;--muted:#637381;--line:#dce4e9;--bg:#f3f6f8;--white:#fff;--accent:#236b61;--soft:#e8f2ef;--warn:#fff4df}
+:root{--ink:#172b3a;--muted:#62727d;--line:#d9e1e6;--bg:#f2f5f7;--accent:#236b61;--soft:#e8f2ef}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;line-height:1.55}
-header{background:var(--ink);color:white;padding:22px 18px}header .wrap,main{max-width:760px;margin:auto}header small{opacity:.75;letter-spacing:.12em}h1{font-size:23px;margin:5px 0}main{padding:18px 14px 50px}.card{background:white;border:1px solid var(--line);border-radius:16px;padding:18px;margin:0 0 14px;box-shadow:0 3px 12px #142a3810}
-h2{font-size:17px;margin:0 0 12px}.muted{color:var(--muted);font-size:13px}.notice{background:var(--warn);border-radius:12px;padding:12px;font-size:13px;margin-bottom:14px}
-label.check{display:flex;gap:11px;padding:12px 0;border-bottom:1px solid #edf1f3;align-items:flex-start}label.check:last-child{border:0}input[type=checkbox]{width:20px;height:20px;margin:2px 0;accent-color:var(--accent);flex:none}
-input[type=text],textarea,select{width:100%;border:1px solid var(--line);border-radius:10px;padding:12px;font:inherit;background:white;color:var(--ink)}textarea{min-height:76px;resize:vertical}
-button{border:0;border-radius:11px;background:var(--accent);color:white;font:inherit;font-weight:650;padding:12px 16px;cursor:pointer}button.secondary{background:#e9eef1;color:var(--ink)}button:disabled{opacity:.4;cursor:not-allowed}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}.actions button{flex:1}
-.tabs{display:flex;gap:8px;margin-bottom:14px}.tabs button{flex:1}.tabs button.active{background:var(--ink)}
-.pill{display:inline-block;background:var(--soft);color:var(--accent);border-radius:99px;padding:3px 9px;font-size:12px;font-weight:700}
-.signature{border:1px dashed #9aabb5;border-radius:12px;padding:10px;background:#fbfcfd}.signature canvas{width:100%;height:130px;display:block;touch-action:none;background:white;border-radius:8px}.signature small{color:var(--muted)}
-.hidden{display:none!important}.progress{height:7px;background:#e9eef1;border-radius:20px;overflow:hidden;margin:10px 0}.progress span{display:block;height:100%;background:var(--accent);width:0}
-footer{max-width:760px;margin:auto;padding:0 16px 30px;color:var(--muted);font-size:12px}
-
-@media print{
- body{background:#fff}header{padding:12px 18px}.notice,.tabs,.actions,footer,#workflow .signature button{display:none!important}
- main{padding:8px}.card{box-shadow:none;break-inside:avoid;border:1px solid #bbb}
- .hidden{display:block!important}#workflow{display:block!important}
-}
-</style>
-</head>
+header{background:var(--ink);color:#fff;padding:20px 16px}header,main,footer{max-width:850px;margin:auto}h1{font-size:22px;margin:4px 0}header small{opacity:.75;letter-spacing:.1em}
+main{padding:16px 12px 40px}.card{background:white;border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:13px}
+h2{font-size:17px;margin:0 0 12px}.muted{font-size:13px;color:var(--muted)}label{display:block;font-size:13px;color:var(--muted);margin:8px 0 5px}
+input[type=text],textarea{width:100%;padding:11px;border:1px solid var(--line);border-radius:9px;font:inherit;color:var(--ink);background:#fff}
+.people{display:grid;grid-template-columns:1fr 1fr;gap:10px}.tabs{display:flex;gap:8px;margin-bottom:12px}.tabs button{flex:1}
+button{border:0;border-radius:10px;background:var(--accent);color:#fff;padding:11px 14px;font:inherit;font-weight:650}.secondary{background:#e8edf0;color:var(--ink)}button:disabled{opacity:.4}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.actions button{flex:1}
+.check{display:flex;gap:10px;align-items:flex-start;padding:11px 0;border-bottom:1px solid #edf0f2;color:var(--ink);font-size:14px}.check input{width:19px;height:19px;margin:2px 0;flex:none;accent-color:var(--accent)}
+.signature{border:1px dashed #9eabb4;border-radius:10px;padding:8px;background:#fbfcfd}.signature canvas{width:100%;height:120px;display:block;background:#fff;touch-action:none;border-radius:7px}
+.pill{display:inline-block;border-radius:30px;background:var(--soft);color:var(--accent);padding:3px 9px;font-size:12px;font-weight:700}
+.hidden{display:none!important}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:13px;min-width:520px}th,td{border:1px solid var(--line);padding:8px;text-align:left;vertical-align:top}th{background:#edf3f2}td.center,th.center{text-align:center}
+footer{padding:0 16px 28px;color:var(--muted);font-size:12px}
+@media(max-width:520px){.people{grid-template-columns:1fr}.card{padding:13px}}
+@media print{body{background:white}header{padding:10px 16px}.no-print,footer{display:none!important}main{padding:0}.card{box-shadow:none;break-inside:avoid;border:0;padding:8px}.table-wrap{overflow:visible}table{min-width:0;font-size:11px}.signature canvas{display:none}}
+</style></head>
 <body>
-<header><div class="wrap"><small>PAIR CONSENT / PROTOTYPE</small><h1>二人の意思を、二人で確認する。</h1><div style="font-size:13px;opacity:.8">相互確認のための試作画面</div></div></header>
+<header><small>PAIR CONSENT / PROTOTYPE 3.0</small><h1>二人の意思を、二人で確認する。</h1><div style="font-size:13px;opacity:.8">相互確認のための試作画面</div></header>
 <main>
-<div class="notice"><b>試作版・重要：</b>このファイルは端末内で動く試作版です。記録はこのブラウザに保存され、作成から30日後に次回起動時の確認なしで自動削除されます。別々のスマートフォン間の同期・サーバー保存・サーバー側削除は未実装です。実際の個人情報・署名・性的情報を入力しないでください。</div>
-<div class="card">
-<h2>セッション設定</h2>
-<label class="muted" for="label">セッション名（任意）</label>
-<input id="label" type="text" maxlength="40" placeholder="例：相互確認">
-<div class="actions"><button id="create">新しいセッションを開始</button><button class="secondary" id="reset">デモをリセット</button></div>
-<p class="muted" id="sessionInfo">セッションはまだ作成されていません。</p>
+<div class="card no-print">
+ <b>試作版について</b>
+ <p class="muted">記録はこのブラウザ内に保存され、作成から30日後に次回起動した際、通知や確認なしで削除されます。別々の端末間の同期・サーバー保存は未実装です。書き出したPDF/JPEGや共有先のコピーは自動削除されません。実際の個人情報・署名・性的情報を入力しないでください。</p>
 </div>
+<section class="card no-print">
+ <h2>セッション設定</h2>
+ <label for="sessionName">セッション名（任意）</label><input id="sessionName" type="text" maxlength="40" placeholder="例：相互確認">
+ <div class="people">
+  <div><label for="nameA">A側の表示名（愛称でも可）</label><input id="nameA" type="text" maxlength="30" placeholder="例：はる"></div>
+  <div><label for="nameB">B側の表示名（愛称でも可）</label><input id="nameB" type="text" maxlength="30" placeholder="例：ゆう"></div>
+ </div>
+ <div class="actions"><button id="create">セッションを開始・保存</button><button class="secondary" id="reset">リセット</button></div>
+ <p class="muted" id="sessionInfo">セッションはまだ作成されていません。</p>
+</section>
+
 <div id="workflow" class="hidden">
-<div class="tabs"><button id="tabA" class="active">本人 A</button><button id="tabB" class="secondary">本人 B</button></div>
-<div class="card">
-<div class="pill" id="personPill">本人 A の確認</div>
-<h2 style="margin-top:10px">事前の相互確認</h2>
-<p class="muted">各自が自分の意思で確認してください。チェックはいつでも外せます。確認後も、いつでも意思を変更・撤回できます。</p>
-<div id="preChecks"></div>
-<div class="progress"><span id="preProgress"></span></div><div class="muted" id="preCount">0項目確認済み</div>
-<h2 style="margin-top:20px">署名</h2>
-<div class="signature"><canvas id="signCanvas" width="680" height="260"></canvas><div class="actions"><button class="secondary" id="clearSign">署名を消す</button></div><small>指またはマウスで署名するデモ欄。署名画像はこの画面内だけで扱います。</small></div>
-<label class="check"><input type="checkbox" id="signConfirm"><span>表示された確認事項を自分で読み、自分の意思で確認しました。</span></label>
-<div class="actions"><button id="savePre" disabled>本人の事前確認を保存（デモ）</button></div>
-<p class="muted" id="preStatus">未確認</p>
-</div>
-<div class="card">
-<h2>事後の振り返り（任意）</h2>
-<p class="muted">事後確認は、事前の同意を後から成立させるものではありません。回答しない選択もできます。</p>
-<div id="postChecks"></div>
-<label class="muted" for="notes">今後の対応・話し合いたいこと（任意）</label><textarea id="notes" maxlength="500" placeholder="必要な場合のみ記入"></textarea>
-<div class="signature"><canvas id="postCanvas" width="680" height="180"></canvas><div class="actions"><button class="secondary" id="clearPost">署名を消す</button></div></div>
-<label class="check"><input type="checkbox" id="postConfirm"><span>これは現時点での私自身の振り返りです。回答を強制されていません。</span></label>
-<div class="actions"><button id="savePost" disabled>事後確認を保存（デモ）</button></div>
-<p class="muted" id="postStatus">未回答</p>
-</div>
-<div class="card">
-<h2>記録の状態</h2><div id="summary" class="muted">双方の確認状況がここに表示されます。</div>
-<div class="actions"><button class="secondary" id="export">JSONを書き出す</button><button class="secondary" id="exportPDF">PDFを保存・共有</button><button class="secondary" id="exportJPEG">JPEGを保存・共有</button></div><p class="muted">保存データはこの端末のブラウザ内に限られます。PDF・JPEGとして書き出したファイルは自動削除の対象外です。</p>
-</div>
+ <div class="tabs no-print"><button id="tabA">A側の入力</button><button id="tabB" class="secondary">B側の入力</button></div>
+ <section class="card no-print">
+  <span class="pill" id="who">A側</span><h2 style="margin-top:10px">事前確認</h2>
+  <p class="muted">本人が自分の意思で確認してください。確認後も意思はいつでも変更・撤回できます。健康面の連絡・検査・費用に関する項目も、事前の話し合い事項として双方が個別に確認します。</p>
+  <div id="preChecks"></div>
+  <h2 style="margin-top:18px">事前署名</h2>
+  <div class="signature"><canvas id="preCanvas" width="700" height="240"></canvas><div class="actions"><button class="secondary" id="clearPre">署名を消す</button></div></div>
+  <label class="check"><input type="checkbox" id="preConfirm"><span>表示された内容を自分で読み、自分の意思で確認しました。</span></label>
+  <button id="savePre" disabled>事前確認を保存</button><p class="muted" id="preStatus">未確認</p>
+ </section>
+ <section class="card no-print">
+  <h2>事後の振り返り（任意）</h2><p class="muted">事後確認は事前の同意を後から成立させるものではありません。回答しない選択もできます。</p>
+  <div id="postChecks"></div>
+  <label for="notes">今後の対応・話し合いたいこと（任意）</label><textarea id="notes" maxlength="500" rows="3"></textarea>
+  <h2 style="margin-top:16px">事後署名（任意）</h2>
+  <div class="signature"><canvas id="postCanvas" width="700" height="200"></canvas><div class="actions"><button class="secondary" id="clearPost">署名を消す</button></div></div>
+  <label class="check"><input type="checkbox" id="postConfirm"><span>これは現時点での私自身の振り返りです。回答を強制されていません。</span></label>
+  <button id="savePost" disabled>事後確認を保存</button><p class="muted" id="postStatus">未回答</p>
+ </section>
+
+ <section class="card">
+  <h2>共有用の相互確認記録</h2>
+  <p class="muted">表示名・確認状況・署名画像をまとめています。書き出す前に内容を確認してください。</p>
+  <div id="record"></div>
+  <div class="actions no-print"><button id="exportPDF">PDFを保存・共有</button><button id="exportJPEG">JPEG画像を保存・共有</button><button class="secondary" id="exportJSON">JSONを書き出す</button></div>
+  <p class="muted no-print">PDFは印刷画面から「PDFとして保存」または共有を選択。JPEGは画像ファイルとして保存できます。</p>
+ </section>
 </div>
 </main>
-<footer>PAIR CONSENT v2.0 は相互確認を補助する端末内試作品です。チェック・署名・日時記録だけで、本人性、自由意思、個々の行為への同意、法的責任の有無を確定することはできません。相手の意思はいつでも変わり得ます。</footer>
+<footer>PAIR CONSENT v4.0 は相互確認を補助する試作品です。表示名や署名画像、チェック、日時だけで、本人性・自由意思・個々の行為への同意・法的責任の有無を確定または証明するものではありません。相手の意思はいつでも変わり得ます。</footer>
+
 <script>
-const preItems=[
+const PRE=[
 "私たちは成人であり、自分の意思でこの確認を行っています。",
 "脅迫・強要・威圧などによるものではありません。",
 "双方が性的な関係を望んでいるか、互いに確認しています。",
@@ -77,133 +80,101 @@ const preItems=[
 "確認後も、どちらもいつでも中止・撤回できると理解しています。",
 "避妊方法、妊娠の可能性、避妊に失敗した場合の対応を話し合いました。",
 "性感染症のリスクや必要な予防・検査について話し合いました。",
-"撮影・録音を行う場合は、性行為への同意とは別に、内容・保存・共有について個別に確認します。"
+"撮影・録音を行う場合は、性行為への同意とは別に、内容・保存・共有について個別に確認します。",
+"この出来事に関連して妊娠や性感染症などの健康上の問題が判明した場合、知った側は相手に速やかに伝え、必要な対応を話し合います。",
+"必要に応じて適切な時期に検査・受診を行い、結果や必要な対応について誠実に情報共有します。検査時期は医療機関・検査機関の案内に従います。",
+"検査・治療等の費用が生じた場合は、原因や双方の関与、その他の事情を踏まえて誠実に話し合い、負担方法を決めます。事前に一方の責任や負担割合を決めつけるものではありません。"
 ];
-const postItems=[
+const POST=[
 "避妊は予定どおり行われましたか（該当しない場合は未回答で構いません）。",
 "妊娠・性感染症など、健康面で追加の対応や相談が必要ですか。",
 "行為中に中止・変更したい意思が示された場合、その意思は尊重されましたか。",
 "今後、相手と話し合いたいことや必要な対応がありますか。",
 "第三者との関係・家庭・社会生活への影響について、認識を共有していますか。"
 ];
-let state={createdAt:null,label:"",people:{A:{pre:[],preSigned:false,post:[],postSigned:false},B:{pre:[],preSigned:false,post:[],postSigned:false}}};
-let current="A", drawing=false, last=null;
-const $=id=>document.getElementById(id);
-function renderChecks(id,items,kind){const el=$(id);el.innerHTML="";items.forEach((t,i)=>{const l=document.createElement("label");l.className="check";const c=document.createElement("input");c.type="checkbox";c.checked=state.people[current][kind].includes(i);c.addEventListener("change",()=>{let a=state.people[current][kind];state.people[current][kind]=c.checked?[...a,i]:a.filter(x=>x!==i);if(kind==="pre")updatePre();});const s=document.createElement("span");s.textContent=t;l.append(c,s);el.append(l);});}
-function updatePre(){const n=state.people[current].pre.length;$("preProgress").style.width=(n/preItems.length*100)+"%";$("preCount").textContent=n+" / "+preItems.length+" 項目確認済み";$("savePre").disabled=n!==preItems.length||!$("signConfirm").checked||!hasInk("signCanvas");}
-function updatePost(){ $("savePost").disabled=!$("postConfirm").checked||!hasInk("postCanvas");}
-function setupCanvas(id){const c=$(id),ctx=c.getContext("2d");ctx.lineWidth=3;ctx.lineCap="round";ctx.strokeStyle="#172b3a";function pos(e){const r=c.getBoundingClientRect();return {x:(e.clientX-r.left)*c.width/r.width,y:(e.clientY-r.top)*c.height/r.height};}c.addEventListener("pointerdown",e=>{drawing=true;last=pos(e);c.setPointerCapture(e.pointerId);});c.addEventListener("pointermove",e=>{if(!drawing)return;const p=pos(e);ctx.beginPath();ctx.moveTo(last.x,last.y);ctx.lineTo(p.x,p.y);ctx.stroke();last=p;});["pointerup","pointercancel","pointerleave"].forEach(ev=>c.addEventListener(ev,()=>{drawing=false;updatePre();updatePost();}));}
-function hasInk(id){const c=$(id),ctx=c.getContext("2d");const d=ctx.getImageData(0,0,c.width,c.height).data;for(let i=3;i<d.length;i+=4)if(d[i]>0)return true;return false;}
-function clearCanvas(id){$(id).getContext("2d").clearRect(0,0,$(id).width,$(id).height);updatePre();updatePost();}
-function switchPerson(p){current=p;$("tabA").className=p==="A"?"active":"secondary";$("tabB").className=p==="B"?"active":"secondary";$("personPill").textContent="本人 "+p+" の確認";$("signConfirm").checked=false;$("postConfirm").checked=false;renderChecks("preChecks",preItems,"pre");renderChecks("postChecks",postItems,"post");clearCanvas("signCanvas");clearCanvas("postCanvas");restoreCanvas("signCanvas","signImage");restoreCanvas("postCanvas","postImage");$("preStatus").textContent=state.people[p].preSigned?"事前確認済み（デモ）":"未確認";$("postStatus").textContent=state.people[p].postSigned?"事後確認済み（デモ）":"未回答";updatePre();updatePost();renderSummary();}
-function renderSummary(){const p=state.people;$("summary").innerHTML=["A","B"].map(k=>`本人 ${k}：事前 ${p[k].preSigned?"確認済み":"未完了"} ／ 事後 ${p[k].postSigned?"回答済み":"未回答"}`).join("<br>")+"<br>作成日時："+new Date(state.createdAt).toLocaleString("ja-JP")+"<br>端末内の自動削除：作成から30日後（通知なし）";saveLocal();}
-$("create").onclick=()=>{state.createdAt=new Date().toISOString();state.label=$("label").value;$("sessionInfo").textContent="端末内セッションを作成："+new Date(state.createdAt).toLocaleString("ja-JP");saveLocal();$("workflow").classList.remove("hidden");switchPerson("A");};
-$("reset").onclick=()=>{try{localStorage.removeItem(STORAGE_KEY)}catch(e){};state={createdAt:null,label:"",people:{A:{pre:[],preSigned:false,post:[],postSigned:false},B:{pre:[],preSigned:false,post:[],postSigned:false}}};$("workflow").classList.add("hidden");$("sessionInfo").textContent="セッションはまだ作成されていません。";};
-$("tabA").onclick=()=>switchPerson("A");$("tabB").onclick=()=>switchPerson("B");
-$("signConfirm").onchange=updatePre;$("postConfirm").onchange=updatePost;
-$("clearSign").onclick=()=>clearCanvas("signCanvas");$("clearPost").onclick=()=>clearCanvas("postCanvas");
-$("savePre").onclick=()=>{state.people[current].preSigned=true;$("preStatus").textContent="事前確認済み（デモ）";$("savePre").disabled=true;saveCanvasToState("signCanvas","signImage");renderSummary();};
-$("savePost").onclick=()=>{state.people[current].postSigned=true;$("postStatus").textContent="事後確認済み（デモ）";$("savePost").disabled=true;saveCanvasToState("postCanvas","postImage");renderSummary();};
-$("export").onclick=()=>{if(!state.createdAt)return;const safe={prototype:true,label:state.label,createdAt:state.createdAt,retentionDays:30,people:state.people,notice:"ローカルデモ。本人性・法的効力・実際の同意を証明しません。"};const blob=new Blob([JSON.stringify(safe,null,2)],{type:"application/json"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="pair-consent-demo.json";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1500);};
-
-const STORAGE_KEY="pair-consent-v2";
-const RETENTION_MS=30*24*60*60*1000;
-function saveLocal(){
- if(!state.createdAt)return;
- try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state));}catch(e){}
+const KEY="pair-consent-v4",TTL=30*86400000,$=id=>document.getElementById(id);
+const blankPerson=()=>({pre:[],post:[],preSigned:false,postSigned:false,preSig:"",postSig:"",notes:""});
+let data={createdAt:null,sessionName:"",names:{A:"",B:""},people:{A:blankPerson(),B:blankPerson()}},current="A",drawing=false,last=null;
+function persist(){if(data.createdAt){try{localStorage.setItem(KEY,JSON.stringify(data))}catch(e){}}}
+function expireCheck(){try{let raw=localStorage.getItem(KEY);if(!raw)return;let d=JSON.parse(raw);if(!d.createdAt||Date.now()-Date.parse(d.createdAt)>=TTL)localStorage.removeItem(KEY)}catch(e){localStorage.removeItem(KEY)}}
+function load(){try{let raw=localStorage.getItem(KEY);if(!raw)return;let d=JSON.parse(raw);if(Date.now()-Date.parse(d.createdAt)>=TTL){localStorage.removeItem(KEY);return}data=d;$("sessionName").value=d.sessionName||"";$("nameA").value=d.names.A||"";$("nameB").value=d.names.B||"";$("sessionInfo").textContent="保存済みセッションを復元しました。";$("workflow").classList.remove("hidden");switchPerson("A")}catch(e){localStorage.removeItem(KEY)}}
+function esc(s){return String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function displayName(k){return data.names[k]||k+"側"}
+function checks(container,items,kind){let el=$(container);el.innerHTML="";items.forEach((t,i)=>{let l=document.createElement("label");l.className="check";let c=document.createElement("input");c.type="checkbox";c.checked=data.people[current][kind].includes(i);c.onchange=()=>{let a=data.people[current][kind];data.people[current][kind]=c.checked?[...a,i]:a.filter(x=>x!==i);persist();refresh();};let s=document.createElement("span");s.textContent=t;l.append(c,s);el.append(l)})}
+function canvasSetup(id,field){let c=$(id),ctx=c.getContext("2d");ctx.lineWidth=3;ctx.lineCap="round";ctx.strokeStyle="#172b3a";function pos(e){let r=c.getBoundingClientRect();return{x:(e.clientX-r.left)*c.width/r.width,y:(e.clientY-r.top)*c.height/r.height}}c.onpointerdown=e=>{drawing=true;last=pos(e);c.setPointerCapture(e.pointerId)};c.onpointermove=e=>{if(!drawing)return;let p=pos(e);ctx.beginPath();ctx.moveTo(last.x,last.y);ctx.lineTo(p.x,p.y);ctx.stroke();last=p};["pointerup","pointercancel","pointerleave"].forEach(ev=>c.addEventListener(ev,()=>{if(drawing){drawing=false;data.people[current][field]=c.toDataURL("image/png");persist();refresh()}}))}
+function ink(id){let c=$(id),d=c.getContext("2d").getImageData(0,0,c.width,c.height).data;for(let i=3;i<d.length;i+=4)if(d[i])return true;return false}
+function clearSig(id,field){let c=$(id);c.getContext("2d").clearRect(0,0,c.width,c.height);data.people[current][field]="";persist();refresh()}
+function restoreSig(id,src){let c=$(id),ctx=c.getContext("2d");ctx.clearRect(0,0,c.width,c.height);if(!src)return;let im=new Image();im.onload=()=>ctx.drawImage(im,0,0,c.width,c.height);im.src=src}
+function switchPerson(k){current=k;$("tabA").className=k==="A"?"":"secondary";$("tabB").className=k==="B"?"":"secondary";$("who").textContent=displayName(k)+" の入力";$("preConfirm").checked=false;$("postConfirm").checked=false;$("notes").value=data.people[k].notes||"";checks("preChecks",PRE,"pre");checks("postChecks",POST,"post");restoreSig("preCanvas",data.people[k].preSig);restoreSig("postCanvas",data.people[k].postSig);$("preStatus").textContent=data.people[k].preSigned?"保存済み":"未確認";$("postStatus").textContent=data.people[k].postSigned?"保存済み":"未回答";refresh()}
+function refresh(){let p=data.people[current];$("savePre").disabled=p.pre.length!==PRE.length||!$("preConfirm").checked||!ink("preCanvas");$("savePost").disabled=!$("postConfirm").checked||!ink("postCanvas");renderRecord()}
+function renderRecord(){
+ const a=data.people.A,b=data.people.B;
+ let rows=PRE.map((t,i)=>`<tr><td>${i+1}. ${esc(t)}</td><td class="center">${a.pre.includes(i)?"✓":"—"}</td><td class="center">${b.pre.includes(i)?"✓":"—"}</td></tr>`).join("");
+ let post=POST.map((t,i)=>`<tr><td>${i+1}. ${esc(t)}</td><td class="center">${a.post.includes(i)?"回答":"—"}</td><td class="center">${b.post.includes(i)?"回答":"—"}</td></tr>`).join("");
+ const sig=(src)=>src?`<img src="${src}" alt="署名画像" style="max-width:100%;height:72px;object-fit:contain">`:"<span class='muted'>署名なし</span>";
+ $("record").innerHTML=`<p><b>セッション：</b>${esc(data.sessionName||"（名称なし）")}　<b>作成：</b>${new Date(data.createdAt).toLocaleString("ja-JP")}</p>
+ <div class="table-wrap"><table><thead><tr><th>事前確認項目</th><th class="center">${esc(displayName("A"))}</th><th class="center">${esc(displayName("B"))}</th></tr></thead><tbody>${rows}</tbody></table></div>
+ <h3>事後の振り返り</h3><div class="table-wrap"><table><thead><tr><th>確認項目</th><th class="center">${esc(displayName("A"))}</th><th class="center">${esc(displayName("B"))}</th></tr></thead><tbody>${post}</tbody></table></div>
+ <h3>確認・署名状況</h3><div class="table-wrap"><table><thead><tr><th>項目</th><th>${esc(displayName("A"))}</th><th>${esc(displayName("B"))}</th></tr></thead><tbody>
+ <tr><td>事前確認の保存</td><td>${a.preSigned?"保存済み":"未完了"}</td><td>${b.preSigned?"保存済み":"未完了"}</td></tr>
+ <tr><td>事後確認の保存</td><td>${a.postSigned?"保存済み":"未回答"}</td><td>${b.postSigned?"保存済み":"未回答"}</td></tr>
+ <tr><td>事前署名</td><td>${sig(a.preSig)}</td><td>${sig(b.preSig)}</td></tr>
+ <tr><td>事後署名</td><td>${sig(a.postSig)}</td><td>${sig(b.postSig)}</td></tr>
+ </tbody></table></div>
+ <h3>今後の対応・話し合いたいこと</h3>
+ <div class="table-wrap"><table><thead><tr><th>${esc(displayName("A"))}</th><th>${esc(displayName("B"))}</th></tr></thead><tbody><tr><td>${esc(a.notes||"（記載なし）")}</td><td>${esc(b.notes||"（記載なし）")}</td></tr></tbody></table></div>
+ <p class="muted">この記録は本人性、自由意思、個々の行為への同意、法的責任の有無を確定・証明するものではありません。相手の意思はいつでも変わり得ます。</p>`;
 }
-function loadLocal(){
- try{
-  const raw=localStorage.getItem(STORAGE_KEY);
-  if(!raw)return;
-  const saved=JSON.parse(raw);
-  if(!saved.createdAt || Date.now()-new Date(saved.createdAt).getTime()>=RETENTION_MS){
-   localStorage.removeItem(STORAGE_KEY); return;
-  }
-  if(saved.people && saved.people.A && saved.people.B){
-   state=saved;
-   $("label").value=state.label||"";
-   $("sessionInfo").textContent="保存済みセッションを復元しました。";
-   $("workflow").classList.remove("hidden");
-   switchPerson("A");
-  }
- }catch(e){try{localStorage.removeItem(STORAGE_KEY)}catch(_){}}
+function saveFile(blob,name){let u=URL.createObjectURL(blob),a=document.createElement("a");a.href=u;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(u),2000)}
+function recordCanvas(){
+ const scale=2,W=1200,pad=46,lineH=32,ctxCanvas=document.createElement("canvas"),ctx=ctxCanvas.getContext("2d");
+ const lines=[];const wrap=(s,max=68)=>{let cur="";for(let ch of s){if(ctx.measureText(cur+ch).width>max*16){lines.push(cur);cur=ch}else cur+=ch}lines.push(cur)};
+ ctx.font="22px sans-serif";
+ const a=data.people.A,b=data.people.B;
+ lines.push("PAIR CONSENT — 相互確認記録",`セッション：${data.sessionName||"（名称なし）"}`,`作成日時：${new Date(data.createdAt).toLocaleString("ja-JP")}`,"");
+ lines.push(`事前確認　| ${displayName("A")} | ${displayName("B")}`);
+ PRE.forEach((t,i)=>wrap(`${i+1}. ${t} | ${a.pre.includes(i)?"✓":"—"} | ${b.pre.includes(i)?"✓":"—"}`));
+ lines.push("","事後の振り返り");
+ POST.forEach((t,i)=>wrap(`${i+1}. ${t} | ${a.post.includes(i)?"回答":"—"} | ${b.post.includes(i)?"回答":"—"}`));
+ lines.push("","署名・保存状況");
+ lines.push(`${displayName("A")}：事前 ${a.preSigned?"保存済み":"未完了"} / 事後 ${a.postSigned?"保存済み":"未回答"}`);
+ lines.push(`${displayName("B")}：事前 ${b.preSigned?"保存済み":"未完了"} / 事後 ${b.postSigned?"保存済み":"未回答"}`);
+ lines.push("","今後の対応・話し合いたいこと");
+ wrap(`${displayName("A")}：${a.notes||"（記載なし）"}`);
+ wrap(`${displayName("B")}：${b.notes||"（記載なし）"}`);
+ const sigHeight=110;
+ ctxCanvas.width=W*scale;ctxCanvas.height=(pad*2+lines.length*lineH+sigHeight*2+80)*scale;
+ ctx.scale(scale,scale);ctx.fillStyle="#fff";ctx.fillRect(0,0,W,ctxCanvas.height/scale);ctx.fillStyle="#172b3a";
+ let y=pad+lineH;lines.forEach((s,i)=>{ctx.font=i===0?"bold 30px sans-serif":"21px sans-serif";ctx.fillText(s,pad,y);y+=lineH});
+ function drawSig(src,label){ctx.font="bold 20px sans-serif";ctx.fillText(label,pad,y);y+=8;if(src){let im=new Image();}y+=sigHeight}
+ // Draw signature images synchronously once loaded via Promise in export handler.
+ return {canvas:ctxCanvas, signatureY: pad+lines.length*lineH+12};
 }
-function saveCanvasToState(id, field){
- if(!state.createdAt)return;
- try{state.people[current][field]=$(id).toDataURL("image/png");saveLocal();}catch(e){}
-}
-function restoreCanvas(id, field){
- const data=state.people[current][field];
- if(!data)return;
- const img=new Image();
- img.onload=()=>{const c=$(id),ctx=c.getContext("2d");ctx.clearRect(0,0,c.width,c.height);ctx.drawImage(img,0,0,c.width,c.height);updatePre();updatePost();};
- img.src=data;
-}
-function makeRecord(){
- const p=state.people;
- const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
- const rows=(kind,items)=>items.map((t,i)=>`<li>${esc(t)}：${p.A[kind].includes(i)?"A 確認":"A 未確認"} / ${p.B[kind].includes(i)?"B 確認":"B 未確認"}</li>`).join("");
- return `<div style="font-family: sans-serif;color:#172b3a;padding:24px;line-height:1.6">
- <h1>PAIR CONSENT — 相互確認記録</h1><p>セッション：${esc(state.label||"（名称なし）")}</p>
- <p>作成日時：${new Date(state.createdAt).toLocaleString("ja-JP")}</p>
- <p>端末内保存期限：作成から30日（書き出したファイルは対象外）</p>
- <h2>事前確認</h2><ol>${rows("pre",preItems)}</ol>
- <h2>事後の振り返り</h2><ol>${rows("post",postItems)}</ol>
- <h2>署名・保存状況</h2><p>A：事前 ${p.A.preSigned?"確認済み":"未完了"} / 事後 ${p.A.postSigned?"回答済み":"未回答"}</p>
- <p>B：事前 ${p.B.preSigned?"確認済み":"未完了"} / 事後 ${p.B.postSigned?"回答済み":"未回答"}</p>
- <p style="font-size:12px;color:#555">この記録は本人性、自由意思、個々の行為への同意、法的責任の有無を確定・証明するものではありません。相手の意思はいつでも変わり得ます。</p></div>`;
-}
-function downloadBlob(blob,name){
- const url=URL.createObjectURL(blob),a=document.createElement("a");
- a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1500);
-}
-$("exportPDF").onclick=()=>{
- if(!state.createdAt)return;
- const w=window.open("","_blank");
- if(!w){alert("ポップアップがブロックされました。ブラウザの設定を確認してください。");return;}
- w.document.write(`<!doctype html><html lang="ja"><meta charset="utf-8"><title>PAIR CONSENT 記録</title><body>${makeRecord()}<script>window.onload=()=>window.print()<\/script></body></html>`);
- w.document.close();
-};
-$("exportJPEG").onclick=()=>{
- if(!state.createdAt)return;
- const scale=2, width=1000, pad=48, line=34;
- const canvas=document.createElement("canvas"),ctx=canvas.getContext("2d");
- const p=state.people;
- const lines=[
- "PAIR CONSENT — 相互確認記録",
- "セッション："+(state.label||"（名称なし）"),
- "作成日時："+new Date(state.createdAt).toLocaleString("ja-JP"),
- "",
- "【事前確認】",
- ...preItems.map((t,i)=>`${i+1}. ${t}  A:${p.A.pre.includes(i)?"確認":"未確認"} / B:${p.B.pre.includes(i)?"確認":"未確認"}`),
- "",
- "【事後の振り返り】",
- ...postItems.map((t,i)=>`${i+1}. ${t}  A:${p.A.post.includes(i)?"回答":"未回答"} / B:${p.B.post.includes(i)?"回答":"未回答"}`),
- "",
- "【保存状況】",
- `A：事前 ${p.A.preSigned?"確認済み":"未完了"} / 事後 ${p.A.postSigned?"回答済み":"未回答"}`,
- `B：事前 ${p.B.preSigned?"確認済み":"未完了"} / 事後 ${p.B.postSigned?"回答済み":"未回答"}`,
- "",
- "この記録は本人性、自由意思、個々の行為への同意、法的責任の有無を確定・証明するものではありません。"
- ];
- ctx.font="24px sans-serif";
- const wrapped=[];
- for(const text of lines){
-  if(!text){wrapped.push("");continue;}
-  let s="";
-  for(const ch of text){if(ctx.measureText(s+ch).width>width-2*pad){wrapped.push(s);s=ch;}else{s+=ch;}}
-  wrapped.push(s);
+async function exportJPEG(){
+ let {canvas,signatureY}=recordCanvas(),ctx=canvas.getContext("2d"),scale=2,pad=46;
+ let y=signatureY;
+ const a=data.people.A,b=data.people.B;
+ async function add(src,label,x){
+  ctx.font="bold 20px sans-serif";ctx.fillStyle="#172b3a";ctx.fillText(label,x,y);
+  if(src){let im=new Image();await new Promise(res=>{im.onload=res;im.onerror=res;im.src=src});if(im.complete&&im.naturalWidth)ctx.drawImage(im,x,y+12,360,75)}
  }
- canvas.width=width*scale;canvas.height=(pad*2+wrapped.length*line)*scale;
- ctx.scale(scale,scale);ctx.fillStyle="#fff";ctx.fillRect(0,0,width,canvas.height/scale);
- ctx.fillStyle="#172b3a";ctx.font="24px sans-serif";
- let y=pad+line;
- wrapped.forEach((t,i)=>{if(i===0)ctx.font="bold 30px sans-serif";else ctx.font="24px sans-serif";ctx.fillText(t,pad,y);y+=line;});
- canvas.toBlob(blob=>{if(blob)downloadBlob(blob,"pair-consent-record.jpg");},"image/jpeg",0.92);
-};
-
-setupCanvas("signCanvas");setupCanvas("postCanvas");
-loadLocal();
-</script>
-</body></html>
+ await add(a.preSig,displayName("A")+" 事前署名",pad);
+ await add(b.preSig,displayName("B")+" 事前署名",canvas.width/2+pad/2);
+ y+=105;
+ await add(a.postSig,displayName("A")+" 事後署名",pad);
+ await add(b.postSig,displayName("B")+" 事後署名",canvas.width/2+pad/2);
+ canvas.toBlob(blob=>blob&&saveFile(blob,"pair-consent-record.jpg"),"image/jpeg",.94);
+}
+function pdfHTML(){let clone=$("record").cloneNode(true);return `<!doctype html><html lang="ja"><meta charset="utf-8"><title>PAIR CONSENT 記録</title><style>body{font-family:-apple-system,sans-serif;color:#172b3a;padding:20px}table{width:100%;border-collapse:collapse;font-size:11px;page-break-inside:auto}td,th{border:1px solid #ccd5db;padding:6px;vertical-align:top}th{background:#edf3f2}img{max-height:65px;max-width:180px}h2,h3{margin:18px 0 8px}.muted{font-size:10px;color:#555}</style><h1>PAIR CONSENT — 相互確認記録</h1>${clone.innerHTML}<script>window.onload=()=>window.print()<\/script></html>`}
+$("create").onclick=()=>{data={createdAt:new Date().toISOString(),sessionName:$("sessionName").value,names:{A:$("nameA").value.trim(),B:$("nameB").value.trim()},people:{A:blankPerson(),B:blankPerson()}};persist();$("workflow").classList.remove("hidden");$("sessionInfo").textContent="端末内に保存しました。";switchPerson("A")};
+$("reset").onclick=()=>{localStorage.removeItem(KEY);data={createdAt:null,sessionName:"",names:{A:"",B:""},people:{A:blankPerson(),B:blankPerson()}};$("workflow").classList.add("hidden");$("sessionInfo").textContent="セッションはまだ作成されていません。"};
+$("tabA").onclick=()=>switchPerson("A");$("tabB").onclick=()=>switchPerson("B");
+$("preConfirm").onchange=refresh;$("postConfirm").onchange=refresh;
+$("clearPre").onclick=()=>clearSig("preCanvas","preSig");$("clearPost").onclick=()=>clearSig("postCanvas","postSig");
+$("savePre").onclick=()=>{data.people[current].preSigned=true;data.people[current].preSig=$("preCanvas").toDataURL("image/png");persist();$("preStatus").textContent="保存済み";refresh()};
+$("savePost").onclick=()=>{data.people[current].postSigned=true;data.people[current].postSig=$("postCanvas").toDataURL("image/png");data.people[current].notes=$("notes").value;persist();$("postStatus").textContent="保存済み";refresh()};
+$("exportPDF").onclick=()=>{let w=window.open("","_blank");if(!w){alert("ポップアップがブロックされました。ブラウザの設定を確認してください。");return}w.document.open();w.document.write(pdfHTML());w.document.close()};
+$("exportJPEG").onclick=exportJPEG;
+$("exportJSON").onclick=()=>saveFile(new Blob([JSON.stringify(data,null,2)],{type:"application/json"}),"pair-consent-record.json");
+canvasSetup("preCanvas","preSig");canvasSetup("postCanvas","postSig");expireCheck();load();
+</script></body></html>
