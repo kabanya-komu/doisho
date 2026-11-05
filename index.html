@@ -8,27 +8,53 @@
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;line-height:1.55}
 header{background:var(--ink);color:#fff;padding:20px 16px}header,main,footer{max-width:850px;margin:auto}h1{font-size:22px;margin:4px 0}header small{opacity:.75;letter-spacing:.1em}
 main{padding:16px 12px 40px}.card{background:white;border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:13px}
-h2{font-size:17px;margin:0 0 12px}.muted{font-size:13px;color:var(--muted)}label{display:block;font-size:13px;color:var(--muted);margin:8px 0 5px}
+h2{font-size:17px;margin:0 0 12px}h3{font-size:15px;margin:16px 0 8px}.muted{font-size:13px;color:var(--muted)}label{display:block;font-size:13px;color:var(--muted);margin:8px 0 5px}
 input[type=text],textarea{width:100%;padding:11px;border:1px solid var(--line);border-radius:9px;font:inherit;color:var(--ink);background:#fff}
 .people{display:grid;grid-template-columns:1fr 1fr;gap:10px}.tabs{display:flex;gap:8px;margin-bottom:12px}.tabs button{flex:1}
-button{border:0;border-radius:10px;background:var(--accent);color:#fff;padding:11px 14px;font:inherit;font-weight:650}.secondary{background:#e8edf0;color:var(--ink)}button:disabled{opacity:.4}
-.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.actions button{flex:1}
+button,.btnlike{border:0;border-radius:10px;background:var(--accent);color:#fff;padding:11px 14px;font:inherit;font-weight:650;cursor:pointer;text-align:center;display:inline-block;margin:0}
+.secondary{background:#e8edf0;color:var(--ink)}button:disabled{opacity:.4;cursor:default}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.actions button,.actions .btnlike{flex:1;min-width:120px}
 .check{display:flex;gap:10px;align-items:flex-start;padding:11px 0;border-bottom:1px solid #edf0f2;color:var(--ink);font-size:14px}.check input{width:19px;height:19px;margin:2px 0;flex:none;accent-color:var(--accent)}
 .signature{border:1px dashed #9eabb4;border-radius:10px;padding:8px;background:#fbfcfd}.signature canvas{width:100%;height:120px;display:block;background:#fff;touch-action:none;border-radius:7px}
 .pill{display:inline-block;border-radius:30px;background:var(--soft);color:var(--accent);padding:3px 9px;font-size:12px;font-weight:700}
-.hidden{display:none!important}.fun-card{background:linear-gradient(135deg,#fff2f6,#fff8df);border:2px solid #ffc3d2;text-align:center;padding:22px 16px}.fun-card h2{font-size:30px;color:#d94e7c;margin:4px 0}.fun-card p{color:#75445a}.monkeys{width:min(100%,420px);height:auto;display:block;margin:8px auto 12px}.fun-button{background:#ef6290;border-radius:999px;padding:14px 24px;font-size:17px;box-shadow:0 4px 0 #c74470}.post-gate{background:#f0f7ff;border:2px solid #c8e0ff;text-align:center;padding:20px}.post-gate h2{font-size:22px;color:#245b91}.post-gate button{background:#347fc1;border-radius:999px}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:13px;min-width:520px}th,td{border:1px solid var(--line);padding:8px;text-align:left;vertical-align:top}th{background:#edf3f2}td.center,th.center{text-align:center}
+.vh{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.hidden{display:none!important}
+
+/* ===== Have fun! 画面（明るいパステル） ===== */
+body.stage-fun{background:linear-gradient(160deg,#ffeef5 0%,#fff8dc 48%,#e6f8ef 100%) fixed}
+body.stage-fun header{background:linear-gradient(90deg,#ffc9dd,#ffe7a8);color:#7a3550}
+.fun-card{background:linear-gradient(135deg,#fff4f8,#fffbe6);border:3px dashed #ffb3cb;text-align:center;padding:20px 14px 24px;border-radius:24px;box-shadow:0 8px 24px rgba(255,140,180,.25)}
+.fun-card .pill{background:#ffe0e9;color:#b63f69}
+.fun-title{font-size:40px;line-height:1.15;margin:8px 0 6px;color:#ff5e8e;letter-spacing:.02em;text-shadow:3px 3px 0 #fff,5px 5px 0 #ffd3e1}
+.fun-card p{color:#75445a;margin:6px 0}
+.monkeys{width:min(100%,460px);height:auto;display:block;margin:8px auto 12px;filter:drop-shadow(0 5px 6px rgba(214,90,130,.25))}
+.fun-button{background:#ef6290;border-radius:999px;padding:15px 30px;font-size:18px;box-shadow:0 5px 0 #c74470;margin-top:6px}
+.fun-button:active{transform:translateY(3px);box-shadow:0 2px 0 #c74470}
+.after-note{font-size:17px;font-weight:700;color:#b63f69;margin:10px 0 0}
+.link-btn{background:transparent;color:#a15a78;text-decoration:underline;font-weight:500;padding:8px;font-size:13px}
+.mk-float{animation:mkfloat 1.6s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes mkfloat{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-6px) scale(1.15)}}
+@media (prefers-reduced-motion:reduce){.mk-float{animation:none}}
+
+/* ===== 記録表（画面表示） ===== */
+.rec-table{width:100%;table-layout:fixed;border-collapse:collapse;font-size:13px;margin:0 0 6px}
+.rec-table th,.rec-table td{border:1.5px solid #8a98a3;padding:8px;text-align:left;vertical-align:top;overflow-wrap:anywhere;word-break:break-word}
+.rec-table th{background:#d7ebe6}.rec-table td:first-child{background:#f6f9fa}
+.rec-table tr{break-inside:avoid;page-break-inside:avoid}
+.rec-table img{max-width:100%;height:60px;object-fit:contain;display:block}
+.st-on{color:#1c6b43;font-weight:700}.st-off{color:#7b8891}
 footer{padding:0 16px 28px;color:var(--muted);font-size:12px}
-@media(max-width:520px){.people{grid-template-columns:1fr}.card{padding:13px}}
-@media print{body{background:white}header{padding:10px 16px}.no-print,footer{display:none!important}main{padding:0}.card{box-shadow:none;break-inside:avoid;border:0;padding:8px}.table-wrap{overflow:visible}table{min-width:0;font-size:11px}.signature canvas{display:none}}
+@media(max-width:520px){.people{grid-template-columns:1fr}.card{padding:13px}.fun-title{font-size:34px}}
+@media print{body{background:white}header{padding:10px 16px}.no-print,footer{display:none!important}main{padding:0}.card{box-shadow:none;break-inside:avoid;border:0;padding:8px}.signature canvas{display:none}}
 </style></head>
 <body>
-<header><small>PAIR CONSENT / PROTOTYPE 5.0</small><h1>二人の意思を、二人で確認する。</h1><div style="font-size:13px;opacity:.8">相互確認のための試作画面</div></header>
+<header><small>PAIR CONSENT / PROTOTYPE 6.0</small><h1>二人の意思を、二人で確認する。</h1><div style="font-size:13px;opacity:.85">相互確認のための試作画面</div></header>
 <main>
 <div class="card no-print">
  <b>試作版について</b>
- <p class="muted">記録はこのブラウザ内に保存され、作成から30日後に次回起動した際、通知や確認なしで削除されます。別々の端末間の同期・サーバー保存は未実装です。書き出したPDF/JPEGや共有先のコピーは自動削除されません。実際の個人情報・署名・性的情報を入力しないでください。</p>
+ <p class="muted">記録はこのブラウザ内に保存され、作成から30日後に次回起動した際、通知や確認なしで削除されます。別々の端末間の同期・サーバー保存は未実装です。書き出したPDF/JPEG/JSONや共有先のコピーは自動削除されません。実際の個人情報・署名・性的情報を入力しないでください。</p>
 </div>
-<section class="card no-print">
+<section class="card no-print" id="sessionCard">
  <h2>セッション設定</h2>
  <label for="sessionName">セッション名（任意）</label><input id="sessionName" type="text" maxlength="40" placeholder="例：相互確認">
  <div class="people">
@@ -40,8 +66,10 @@ footer{padding:0 16px 28px;color:var(--muted);font-size:12px}
 </section>
 
 <div id="workflow" class="hidden">
- <div class="tabs no-print"><button id="tabA">A側の入力</button><button id="tabB" class="secondary">B側の入力</button></div>
- <section class="card no-print">
+ <div class="tabs no-print" id="tabs"><button id="tabA">A側の入力</button><button id="tabB" class="secondary">B側の入力</button></div>
+
+ <!-- 事前確認 -->
+ <section class="card no-print" id="preSection">
   <span class="pill" id="who">A側</span><h2 style="margin-top:10px">事前確認</h2>
   <p class="muted">本人が自分の意思で確認してください。確認後も意思はいつでも変更・撤回できます。健康面の連絡・検査・費用に関する項目も、事前の話し合い事項として双方が個別に確認します。</p>
   <div id="preChecks"></div>
@@ -49,45 +77,133 @@ footer{padding:0 16px 28px;color:var(--muted);font-size:12px}
   <div class="signature"><canvas id="preCanvas" width="700" height="240"></canvas><div class="actions"><button class="secondary" id="clearPre">署名を消す</button></div></div>
   <label class="check"><input type="checkbox" id="preConfirm"><span>表示された内容を自分で読み、自分の意思で確認しました。</span></label>
   <button id="savePre" disabled>事前確認を保存</button><p class="muted" id="preStatus">未確認</p>
+  <p class="muted" id="preProgress"></p>
+  <button class="secondary hidden" id="backFunFromPre">Have fun! 画面へ戻る</button>
  </section>
+
+ <!-- Have fun! -->
  <section id="funStage" class="card fun-card no-print hidden">
-  <div class="pill" style="background:#ffe0e9;color:#b63f69">BOTH PRE-CHECKS COMPLETE!</div>
-  <h2>Have fun! 😊</h2>
-  <svg class="monkeys" viewBox="0 0 440 230" role="img" aria-label="ミニスカートとリボンの女の子猿、蝶ネクタイの男の子猿が仲良く寄り添うポップなイラスト">
-   <path d="M65 198 Q220 220 375 198" fill="none" stroke="#f5c6a4" stroke-width="5" stroke-linecap="round"/>
-   <g transform="translate(105 112)"><ellipse cx="0" cy="0" rx="54" ry="58" fill="#9b6248"/><circle cx="-48" cy="-35" r="22" fill="#9b6248"/><circle cx="48" cy="-35" r="22" fill="#9b6248"/><circle cx="-48" cy="-35" r="11" fill="#f2b6a1"/><circle cx="48" cy="-35" r="11" fill="#f2b6a1"/><ellipse cx="0" cy="14" rx="36" ry="31" fill="#f5d2ad"/><ellipse cx="-17" cy="-4" rx="5" ry="7" fill="#30221d"/><ellipse cx="17" cy="-4" rx="5" ry="7" fill="#30221d"/><path d="M-12 22 Q0 34 12 22" fill="none" stroke="#8b3e43" stroke-width="4" stroke-linecap="round"/><circle cx="-29" cy="12" r="7" fill="#ef9aa5"/><circle cx="29" cy="12" r="7" fill="#ef9aa5"/><path d="M-15 -56 Q-34 -78 -45 -56 Q-32 -39 -15 -56 M-15 -56 Q2 -78 11 -56 Q-1 -39 -15 -56" fill="#ff78a2" stroke="#d94e7c" stroke-width="3"/><path d="M-39 57 L39 57 L54 105 L-54 105 Z" fill="#ff79a8" stroke="#d94e7c" stroke-width="3"/><path d="M-54 105 Q0 118 54 105" fill="none" stroke="#fff" stroke-width="5" stroke-dasharray="7 6"/><path d="M-48 66 L-65 91 M48 66 L68 87" stroke="#9b6248" stroke-width="12" stroke-linecap="round"/></g>
-   <g transform="translate(300 112)"><ellipse cx="0" cy="0" rx="54" ry="58" fill="#b77a4d"/><circle cx="-48" cy="-35" r="22" fill="#b77a4d"/><circle cx="48" cy="-35" r="22" fill="#b77a4d"/><circle cx="-48" cy="-35" r="11" fill="#f2c3a5"/><circle cx="48" cy="-35" r="11" fill="#f2c3a5"/><ellipse cx="0" cy="14" rx="36" ry="31" fill="#f7d9b8"/><ellipse cx="-17" cy="-4" rx="5" ry="7" fill="#30221d"/><ellipse cx="17" cy="-4" rx="5" ry="7" fill="#30221d"/><path d="M-12 22 Q0 34 12 22" fill="none" stroke="#8b3e43" stroke-width="4" stroke-linecap="round"/><path d="M-15 -57 L0 -43 L15 -57 L0 -69 Z" fill="#5c9bd6"/><path d="M-12 58 L12 58 L22 110 L-22 110 Z" fill="#6d9fd2"/><path d="M-39 66 L-63 90 M39 66 L65 87" stroke="#b77a4d" stroke-width="12" stroke-linecap="round"/></g>
-   <path d="M158 175 Q220 145 258 175" fill="none" stroke="#d94e7c" stroke-width="9" stroke-linecap="round"/>
-   <path d="M215 20 C195 0 170 28 215 55 C260 28 235 0 215 20Z" fill="#ff789d"/><path d="M40 55 l7 12 13 2 -10 9 2 13 -12 -7 -12 7 2 -13 -10 -9 13 -2Z" fill="#ffc94f"/><path d="M390 70 l6 11 12 2 -9 8 2 12 -11 -6 -11 6 2 -12 -9 -8 12 -2Z" fill="#ffc94f"/>
-  </svg>
+  <div class="pill">BOTH PRE-CHECKS COMPLETE!</div>
+  <div class="fun-title">Have fun! 😊</div>
+  <svg class="monkeys" viewBox="0 0 480 320" role="img" aria-label="リボンとミニスカートで睫毛ぱっちりの女の子猿と、照れて汗をかく男の子猿が手をつないでいるポップなイラスト">
+<defs>
+<clipPath id="mk-frame"><rect width="480" height="320" rx="28"/></clipPath>
+<pattern id="mk-dots" width="12" height="12" patternUnits="userSpaceOnUse"><circle cx="6" cy="6" r="2.2" fill="#ffb5cd"/></pattern>
+</defs>
+<g clip-path="url(#mk-frame)">
+<rect width="480" height="320" fill="#fff6dc"/>
+<path d="M240 150 L760.0 150.0 L742.3 284.6Z M240 150 L690.3 410.0 L607.7 517.7Z M240 150 L500.0 600.3 L374.6 652.3Z M240 150 L240.0 670.0 L105.4 652.3Z M240 150 L-20.0 600.3 L-127.7 517.7Z M240 150 L-210.3 410.0 L-262.3 284.6Z M240 150 L-280.0 150.0 L-262.3 15.4Z M240 150 L-210.3 -110.0 L-127.7 -217.7Z M240 150 L-20.0 -300.3 L105.4 -352.3Z M240 150 L240.0 -370.0 L374.6 -352.3Z M240 150 L500.0 -300.3 L607.7 -217.7Z M240 150 L690.3 -110.0 L742.3 15.4Z" fill="#ffe4ee"/>
+<circle cx="240" cy="150" r="125" fill="#fffaf0" opacity=".85"/>
+<rect x="0" y="210" width="170" height="110" fill="url(#mk-dots)" opacity=".7"/>
+<rect x="330" y="0" width="150" height="100" fill="url(#mk-dots)" opacity=".55"/>
+<ellipse cx="240" cy="292" rx="215" ry="16" fill="#cdeedd"/>
+<ellipse cx="240" cy="296" rx="215" ry="12" fill="#bfe6d2" opacity=".6"/>
+</g>
+<!-- 小物 -->
+<g class="mk-float"><path d="M240 193.0 C224.0 182.0 232.0 171.0 240 180.0 C248.0 171.0 256.0 182.0 240 193.0Z" fill="#ff5e8e" /></g>
+<path d="M30 104.1 C15.6 94.2 22.8 84.3 30 92.4 C37.2 84.3 44.4 94.2 30 104.1Z" fill="#ff9fbd" /><path d="M436 157.2 C423.2 148.4 429.6 139.6 436 146.8 C442.4 139.6 448.8 148.4 436 157.2Z" fill="#ffa8c2" /><path d="M412 254.3 C400.8 246.6 406.4 238.9 412 245.2 C417.6 238.9 423.2 246.6 412 254.3Z" fill="#ff9fbd" /><path d="M76 251.4 C66.4 244.8 71.2 238.2 76 243.6 C80.8 238.2 85.6 244.8 76 251.4Z" fill="#ffb9cf" />
+<path d="M30 139 Q32.0 148.0 41 150 Q32.0 152.0 30 161 Q28.0 152.0 19 150 Q28.0 148.0 30 139Z" fill="#ffd35a"/><path d="M452 28 Q454.2 37.8 464 40 Q454.2 42.2 452 52 Q449.8 42.2 440 40 Q449.8 37.8 452 28Z" fill="#ffd35a"/><path d="M230 25 Q231.6 32.4 239 34 Q231.6 35.6 230 43 Q228.4 35.6 221 34 Q228.4 32.4 230 25Z" fill="#ffe08a"/><path d="M446 202 Q447.4 208.6 454 210 Q447.4 211.4 446 218 Q444.6 211.4 438 210 Q444.6 208.6 446 202Z" fill="#ffd35a"/><path d="M120 15 Q121.3 20.7 127 22 Q121.3 23.3 120 29 Q118.7 23.3 113 22 Q118.7 20.7 120 15Z" fill="#bfe3ff"/>
+
+<!-- ===== 女の子猿 ===== -->
+<g id="girl" transform="translate(140 112)">
+ <path d="M-30 122 Q-90 120 -82 72 Q-78 46 -58 54" fill="none" stroke="#a56a4b" stroke-width="11" stroke-linecap="round"/>
+ <path d="M-14 124 L-17 166" stroke="#a56a4b" stroke-width="13" stroke-linecap="round"/>
+ <path d="M-26 124 L-10 124" stroke="none"/>
+ <ellipse cx="-22" cy="173" rx="16" ry="8" fill="#ff5e8e" stroke="#d12f69" stroke-width="2.5"/>
+ <path d="M16 124 Q32 150 56 140" fill="none" stroke="#a56a4b" stroke-width="13" stroke-linecap="round"/>
+ <ellipse cx="66" cy="137" rx="15" ry="8" transform="rotate(-22 66 137)" fill="#ff5e8e" stroke="#d12f69" stroke-width="2.5"/>
+ <path d="M-27 54 Q0 45 27 54 L31 104 L-31 104 Z" fill="#fff3f7" stroke="#e0709a" stroke-width="2.5" stroke-linejoin="round"/>
+ <path d="M0 84.5 C-8.0 79.0 -4.0 73.5 0 78.0 C4.0 73.5 8.0 79.0 0 84.5Z" fill="#ff7aa6" />
+ <path d="M-36 98 L36 98 L54 134 Q41 141 27 134 Q13.5 141 0 134 Q-13.5 141 -27 134 Q-41 141 -54 134 Z" fill="#ff8fb3" stroke="#e0709a" stroke-width="2.5" stroke-linejoin="round"/>
+ <g fill="#fff" opacity=".85"><circle cx="-26" cy="112" r="3.4"/><circle cx="-8" cy="120" r="3.4"/><circle cx="12" cy="110" r="3.4"/><circle cx="28" cy="122" r="3.4"/><circle cx="-38" cy="126" r="3"/><circle cx="2" cy="104" r="3"/></g>
+ <path d="M24 64 Q60 86 94 99" fill="none" stroke="#a56a4b" stroke-width="12" stroke-linecap="round"/>
+ <circle cx="98" cy="100" r="9.5" fill="#f5d2ad" stroke="#a56a4b" stroke-width="3"/>
+ <circle cx="-58" cy="-6" r="21" fill="#a56a4b"/><circle cx="58" cy="-6" r="21" fill="#a56a4b"/>
+ <circle cx="-58" cy="-6" r="11" fill="#f6b9b0"/><circle cx="58" cy="-6" r="11" fill="#f6b9b0"/>
+ <ellipse cx="0" cy="0" rx="60" ry="54" fill="#a56a4b"/>
+ <ellipse cx="0" cy="14" rx="44" ry="36" fill="#fbe3cb"/><circle cx="-21" cy="-2" r="25" fill="#fbe3cb"/><circle cx="21" cy="-2" r="25" fill="#fbe3cb"/>
+ <ellipse cx="-21" cy="-2" rx="8.5" ry="11.5" fill="#3a2620"/><ellipse cx="21" cy="-2" rx="8.5" ry="11.5" fill="#3a2620"/>
+ <circle cx="-18" cy="-7" r="3.8" fill="#fff"/><circle cx="24" cy="-7" r="3.8" fill="#fff"/><circle cx="-24" cy="3" r="1.9" fill="#fff"/><circle cx="18" cy="3" r="1.9" fill="#fff"/>
+ <g stroke="#3a2620" stroke-width="3.2" stroke-linecap="round" fill="none">
+  <path d="M-28 -9 L-39 -16 M-29 -3 L-41 -4 M-26 -13 L-32 -24"/>
+  <path d="M28 -9 L39 -16 M29 -3 L41 -4 M26 -13 L32 -24"/>
+ </g>
+ <path d="M-31 -22 Q-21 -29 -11 -23 M11 -23 Q21 -29 31 -22" fill="none" stroke="#6b4331" stroke-width="3" stroke-linecap="round"/>
+ <ellipse cx="-3" cy="12" rx="1.8" ry="2.4" fill="#b9775c"/><ellipse cx="3" cy="12" rx="1.8" ry="2.4" fill="#b9775c"/>
+ <path d="M-11 22 Q0 38 11 22 Z" fill="#d63d62" stroke="#d63d62" stroke-width="2" stroke-linejoin="round"/><ellipse cx="0" cy="29.5" rx="5" ry="3" fill="#ff9bb0"/>
+ <ellipse cx="-36" cy="14" rx="9" ry="6" fill="#ff8fa8" opacity=".6"/><ellipse cx="36" cy="14" rx="9" ry="6" fill="#ff8fa8" opacity=".6"/>
+ <path d="M-10 -52 Q-8 -72 3 -62 Q9 -78 17 -58 Q-1 -48 -10 -52Z" fill="#6b4331"/>
+ <g transform="translate(-36 -46) rotate(-22)"><path d="M0 0 L-27 -17 L-27 17 Z M0 0 L27 -17 L27 17 Z" fill="#ff4f87" stroke="#d12f69" stroke-width="2.5" stroke-linejoin="round"/><circle cx="-16" cy="-4" r="2.6" fill="#fff"/><circle cx="16" cy="4" r="2.6" fill="#fff"/><circle cx="0" cy="0" r="7" fill="#ff7aa6" stroke="#d12f69" stroke-width="2.5"/></g>
+ <path d="M-24 64 Q-58 46 -46 22" fill="none" stroke="#a56a4b" stroke-width="12" stroke-linecap="round"/>
+ <circle cx="-45" cy="19" r="9.5" fill="#f5d2ad" stroke="#a56a4b" stroke-width="3"/>
+</g>
+
+<!-- ===== 男の子猿 ===== -->
+<g id="boy" transform="translate(340 112)">
+ <path d="M30 122 Q90 120 82 72 Q78 46 58 54" fill="none" stroke="#9a6445" stroke-width="11" stroke-linecap="round"/>
+ <path d="M-16 128 L-16 166 M16 128 L16 166" stroke="#9a6445" stroke-width="13" stroke-linecap="round"/>
+ <ellipse cx="-20" cy="173" rx="16" ry="8" fill="#4f6fa8" stroke="#2f4a7c" stroke-width="2.5"/><ellipse cx="20" cy="173" rx="16" ry="8" fill="#4f6fa8" stroke="#2f4a7c" stroke-width="2.5"/>
+ <path d="M-29 54 Q0 45 29 54 L33 104 L-33 104 Z" fill="#8fc6f0" stroke="#4d90c4" stroke-width="2.5" stroke-linejoin="round"/>
+ <path d="M-31 74 L31 74 M-32 88 L32 88" stroke="#fff" stroke-width="4" opacity=".8"/>
+ <path d="M-33 100 L33 100 L37 134 L6 134 L0 118 L-6 134 L-37 134 Z" fill="#f2d49b" stroke="#c9a35a" stroke-width="2.5" stroke-linejoin="round"/>
+ <path d="M0 57 L-15 48 L-15 66 Z M0 57 L15 48 L15 66 Z" fill="#ff6b6b" stroke="#d94a4a" stroke-width="2" stroke-linejoin="round"/><circle cx="0" cy="57" r="4.5" fill="#ff8a8a"/>
+ <path d="M-24 64 Q-60 86 -94 99" fill="none" stroke="#9a6445" stroke-width="12" stroke-linecap="round"/>
+ <circle cx="-98" cy="100" r="9.5" fill="#f7dcc0" stroke="#9a6445" stroke-width="3"/>
+ <circle cx="-58" cy="-6" r="21" fill="#9a6445"/><circle cx="58" cy="-6" r="21" fill="#9a6445"/>
+ <circle cx="-58" cy="-6" r="11" fill="#f2b6a1"/><circle cx="58" cy="-6" r="11" fill="#f2b6a1"/>
+ <ellipse cx="0" cy="0" rx="60" ry="54" fill="#9a6445"/>
+ <ellipse cx="0" cy="14" rx="44" ry="36" fill="#f7dcc0"/><circle cx="-21" cy="-2" r="25" fill="#f7dcc0"/><circle cx="21" cy="-2" r="25" fill="#f7dcc0"/>
+ <ellipse cx="-21" cy="-2" rx="10" ry="12" fill="#fff" stroke="#3a2620" stroke-width="2.5"/><ellipse cx="21" cy="-2" rx="10" ry="12" fill="#fff" stroke="#3a2620" stroke-width="2.5"/>
+ <circle cx="-17" cy="2" r="5.5" fill="#3a2620"/><circle cx="25" cy="2" r="5.5" fill="#3a2620"/><circle cx="-15.5" cy="0" r="1.8" fill="#fff"/><circle cx="26.5" cy="0" r="1.8" fill="#fff"/>
+ <path d="M-33 -16 L-13 -25 M13 -25 L33 -16" fill="none" stroke="#5a3a2a" stroke-width="3.6" stroke-linecap="round"/>
+ <ellipse cx="-3" cy="12" rx="1.8" ry="2.4" fill="#b9775c"/><ellipse cx="3" cy="12" rx="1.8" ry="2.4" fill="#b9775c"/>
+ <path d="M-11 27 Q-7 21 -3 27 Q1 33 5 27 Q8 23 12 27" fill="none" stroke="#8b3e43" stroke-width="3.5" stroke-linecap="round"/>
+ <ellipse cx="-36" cy="14" rx="11" ry="8" fill="#ff6f7f" opacity=".72"/><ellipse cx="36" cy="14" rx="11" ry="8" fill="#ff6f7f" opacity=".72"/>
+ <g stroke="#d9364f" stroke-width="2" stroke-linecap="round"><path d="M-42 9 L-38 19 M-36 8 L-32 18 M-30 9 L-27 17"/><path d="M30 9 L34 19 M36 8 L40 18 M42 9 L45 17"/></g>
+ <path d="M-24 -48 L-19 -72 L-9 -54 L2 -78 L10 -54 L23 -70 L25 -46 Z" fill="#5a3a2a" stroke="#5a3a2a" stroke-width="2" stroke-linejoin="round"/>
+ <path d="M-56 -50 Q-67 -34 -56 -26 Q-45 -34 -56 -50 Z" fill="#aee3ff" stroke="#5aa9d6" stroke-width="2.2" stroke-linejoin="round"/>
+ <path d="M-66 -46 L-72 -52 M-70 -36 L-78 -38" stroke="#5aa9d6" stroke-width="2.4" stroke-linecap="round"/>
+ <path d="M26 64 Q72 34 38 -44" fill="none" stroke="#9a6445" stroke-width="12" stroke-linecap="round"/>
+ <circle cx="34" cy="-48" r="10" fill="#f7dcc0" stroke="#9a6445" stroke-width="3"/>
+</g>
+<!-- 効果音・ふきだし -->
+<text x="384" y="52" font-size="26" font-weight="900" fill="#ff5e8e" stroke="#fff" stroke-width="6" paint-order="stroke" stroke-linejoin="round" transform="rotate(9 384 52)" font-family="'Hiragino Maru Gothic ProN','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP',sans-serif">ドキッ!</text>
+<text x="8" y="40" font-size="20" font-weight="900" fill="#e0488a" stroke="#fff" stroke-width="6" paint-order="stroke" stroke-linejoin="round" transform="rotate(-8 8 40)" font-family="'Hiragino Maru Gothic ProN','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP',sans-serif">うふっ♡</text>
+</svg>
   <p><b>準備はOK！</b><br>お互いの気持ちを大切に、楽しい時間を。</p>
   <p class="muted">事前確認は、いつでも変更・撤回できます。途中でも相手の意思を確認してください。</p>
-  <button class="fun-button" id="openPost">余韻に浸ったら、このボタン ☝️</button>
+  <button class="fun-button" id="openPost">事後確認へ進む</button>
+  <p class="after-note">余韻に浸ったら、このボタン☝️</p>
+  <button class="link-btn" id="backPreFromFun">事前確認を見直す</button>
  </section>
- <section id="postGate" class="card post-gate no-print hidden">
-  <h2>おかえりなさい 😊</h2><p>落ち着いたら、今の気持ちを振り返ってみましょう。</p>
-  <button id="showPost">事後の振り返りへ進む</button>
- </section>
+
+ <!-- 事後確認 -->
  <section id="postSection" class="card no-print hidden">
-  <h2>事後の振り返り（任意）</h2><p class="muted">事後確認は事前の同意を後から成立させるものではありません。回答しない選択もできます。</p>
+  <span class="pill" id="whoPost">A側</span><h2 style="margin-top:10px">事後確認（任意）</h2>
+  <p class="muted">事後確認は、事前の同意を後から成立させるものではありません。事前確認とは別に、AとBがそれぞれ自分の意思で回答・保存します。回答しない、保存しない、回答を断る自由があります。</p>
   <div id="postChecks"></div>
   <label for="notes">今後の対応・話し合いたいこと（任意）</label><textarea id="notes" maxlength="500" rows="3"></textarea>
   <h2 style="margin-top:16px">事後署名（任意）</h2>
   <div class="signature"><canvas id="postCanvas" width="700" height="200"></canvas><div class="actions"><button class="secondary" id="clearPost">署名を消す</button></div></div>
   <label class="check"><input type="checkbox" id="postConfirm"><span>これは現時点での私自身の振り返りです。回答を強制されていません。</span></label>
   <button id="savePost" disabled>事後確認を保存</button><p class="muted" id="postStatus">未回答</p>
+  <button class="secondary" id="backFunFromPost">Have fun! 画面へ戻る（回答しない場合もこちら）</button>
  </section>
 
  <section class="card">
   <h2>共有用の相互確認記録</h2>
-  <p class="muted">表示名・確認状況・署名画像をまとめています。書き出す前に内容を確認してください。</p>
+  <p class="muted">表示名・確認状況・署名画像を表にまとめています。書き出す前に内容を確認してください。</p>
   <div id="record"></div>
-  <div class="actions no-print"><button id="exportPDF">PDFを保存・共有</button><button id="exportJPEG">JPEG画像を保存・共有</button><button class="secondary" id="exportJSON">JSONを書き出す</button></div>
-  <p class="muted no-print">PDFは印刷画面から「PDFとして保存」または共有を選択。JPEGは画像ファイルとして保存できます。</p>
+  <div class="actions no-print">
+   <button id="exportPDF">PDFを保存・共有</button><button id="exportJPEG">JPEG画像を保存・共有</button>
+   <button class="secondary" id="exportJSON">JSONを書き出す</button>
+   <label class="btnlike secondary" for="importFile">JSONを読み込む</label><input class="vh" type="file" id="importFile" accept="application/json,.json">
+  </div>
+  <p class="muted no-print" id="exportStatus">PDF・JPEGは同じ表レイアウトで出力されます。端末が対応していれば共有画面、非対応なら保存（ダウンロード）されます。</p>
  </section>
 </div>
 </main>
-<footer>PAIR CONSENT v5.0 は相互確認を補助する試作品です。表示名や署名画像、チェック、日時だけで、本人性・自由意思・個々の行為への同意・法的責任の有無を確定または証明するものではありません。相手の意思はいつでも変わり得ます。</footer>
+<footer>PAIR CONSENT v6.0 は相互確認を補助する試作品です。表示名や署名画像、チェック、日時だけで、本人性・自由意思・個々の行為への同意・法的責任の有無を確定または証明するものではありません。相手の意思はいつでも変わり得ます。</footer>
 
 <script>
 const PRE=[
@@ -110,91 +226,293 @@ const POST=[
 "今後、相手と話し合いたいことや必要な対応がありますか。",
 "第三者との関係・家庭・社会生活への影響について、認識を共有していますか。"
 ];
+const DISCLAIMER="この記録は本人性、自由意思、個々の行為への同意、法的責任の有無を確定・証明するものではありません。相手の意思はいつでも変わり得ます。事後確認は事前の同意を後から成立させるものではありません。";
+/* 保存キーは v5 のまま（既存データとの互換性維持）。 */
 const KEY="pair-consent-v5",TTL=30*86400000,$=id=>document.getElementById(id);
 const blankPerson=()=>({pre:[],post:[],preSigned:false,postSigned:false,preSig:"",postSig:"",notes:""});
-let data={createdAt:null,sessionName:"",names:{A:"",B:""},people:{A:blankPerson(),B:blankPerson()}},current="A",drawing=false,last=null;
-function persist(){if(data.createdAt){try{localStorage.setItem(KEY,JSON.stringify(data))}catch(e){}}}
-function expireCheck(){try{let raw=localStorage.getItem(KEY);if(!raw)return;let d=JSON.parse(raw);if(!d.createdAt||Date.now()-Date.parse(d.createdAt)>=TTL)localStorage.removeItem(KEY)}catch(e){localStorage.removeItem(KEY)}}
-function load(){try{let raw=localStorage.getItem(KEY);if(!raw)return;let d=JSON.parse(raw);if(Date.now()-Date.parse(d.createdAt)>=TTL){localStorage.removeItem(KEY);return}data=d;$("sessionName").value=d.sessionName||"";$("nameA").value=d.names.A||"";$("nameB").value=d.names.B||"";$("sessionInfo").textContent="保存済みセッションを復元しました。";$("workflow").classList.remove("hidden");switchPerson("A")}catch(e){localStorage.removeItem(KEY)}}
-function esc(s){return String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+const blankData=()=>({createdAt:null,sessionName:"",names:{A:"",B:""},people:{A:blankPerson(),B:blankPerson()},ui:{stage:"fun"}});
+let data=blankData(),current="A",drawing=false,last=null;
+
+/* ---------- 保存・読み込み ---------- */
+function persist(){if(!data.createdAt)return true;try{localStorage.setItem(KEY,JSON.stringify(data));return true}catch(e){return false}}
+function expireCheck(){try{let raw=localStorage.getItem(KEY);if(!raw)return;let d=JSON.parse(raw);let t=d&&d.createdAt?Date.parse(d.createdAt):NaN;if(!(Date.now()-t<TTL))localStorage.removeItem(KEY)}catch(e){try{localStorage.removeItem(KEY)}catch(_){}}}
+function cleanIdx(a,n){return Array.isArray(a)?[...new Set(a.filter(i=>Number.isInteger(i)&&i>=0&&i<n))].sort((x,y)=>x-y):[]}
+function okImg(s){return typeof s==="string"&&s.length<3e6&&/^data:image\/png;base64,[A-Za-z0-9+\/=]+$/.test(s)?s:""}
+function cleanPerson(p){p=p&&typeof p==="object"?p:{};return{pre:cleanIdx(p.pre,PRE.length),post:cleanIdx(p.post,POST.length),preSigned:p.preSigned===true,postSigned:p.postSigned===true,preSig:okImg(p.preSig),postSig:okImg(p.postSig),notes:String(p.notes||"").slice(0,500)}}
+function normalize(d){
+ if(!d||typeof d!=="object"||typeof d.createdAt!=="string"||isNaN(Date.parse(d.createdAt)))return null;
+ const n=d.names&&typeof d.names==="object"?d.names:{},pp=d.people&&typeof d.people==="object"?d.people:{};
+ const st=d.ui&&["pre","fun","post"].includes(d.ui.stage)?d.ui.stage:"fun";
+ return{createdAt:d.createdAt,sessionName:String(d.sessionName||"").slice(0,40),names:{A:String(n.A||"").slice(0,30),B:String(n.B||"").slice(0,30)},people:{A:cleanPerson(pp.A),B:cleanPerson(pp.B)},ui:{stage:st}}
+}
+function load(){
+ let n=null;
+ try{let raw=localStorage.getItem(KEY);if(!raw)return;let d=JSON.parse(raw);let t=d&&d.createdAt?Date.parse(d.createdAt):NaN;if(!(Date.now()-t<TTL)){localStorage.removeItem(KEY);return}n=normalize(d);if(!n){localStorage.removeItem(KEY);return}}catch(e){try{localStorage.removeItem(KEY)}catch(_){}return}
+ data=n;applyDataToInputs();$("sessionInfo").textContent="保存済みセッションを復元しました。";$("workflow").classList.remove("hidden");switchPerson("A");
+ if(stage()!=="pre")requestAnimationFrame(()=>{const el=$(stage()==="fun"?"funStage":"postSection");if(el)el.scrollIntoView({block:"start"})});
+}
+function applyDataToInputs(){$("sessionName").value=data.sessionName||"";$("nameA").value=data.names.A||"";$("nameB").value=data.names.B||""}
+
+/* ---------- 状態判定（表示条件はここだけで決める） ---------- */
+function preComplete(p){return !!p&&p.preSigned===true&&PRE.every((_,i)=>p.pre.includes(i))&&!!p.preSig}
+function bothPre(){return preComplete(data.people.A)&&preComplete(data.people.B)}
+function stage(){if(!data.createdAt||!bothPre())return "pre";return data.ui&&data.ui.stage==="post"?"post":(data.ui&&data.ui.stage==="pre"?"pre":"fun")}
+function setStage(s){data.ui.stage=s;persist();switchPerson(current);window.scrollTo({top:0,behavior:"smooth"})}
+
+/* ---------- 共通 ---------- */
+function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 function displayName(k){return data.names[k]||k+"側"}
-function checks(container,items,kind){let el=$(container);el.innerHTML="";items.forEach((t,i)=>{let l=document.createElement("label");l.className="check";let c=document.createElement("input");c.type="checkbox";c.checked=data.people[current][kind].includes(i);c.onchange=()=>{let a=data.people[current][kind];data.people[current][kind]=c.checked?[...a,i]:a.filter(x=>x!==i);persist();refresh();};let s=document.createElement("span");s.textContent=t;l.append(c,s);el.append(l)})}
-function canvasSetup(id,field){let c=$(id),ctx=c.getContext("2d");ctx.lineWidth=3;ctx.lineCap="round";ctx.strokeStyle="#172b3a";function pos(e){let r=c.getBoundingClientRect();return{x:(e.clientX-r.left)*c.width/r.width,y:(e.clientY-r.top)*c.height/r.height}}c.onpointerdown=e=>{drawing=true;last=pos(e);c.setPointerCapture(e.pointerId)};c.onpointermove=e=>{if(!drawing)return;let p=pos(e);ctx.beginPath();ctx.moveTo(last.x,last.y);ctx.lineTo(p.x,p.y);ctx.stroke();last=p};["pointerup","pointercancel","pointerleave"].forEach(ev=>c.addEventListener(ev,()=>{if(drawing){drawing=false;data.people[current][field]=c.toDataURL("image/png");persist();refresh()}}))}
+function checks(container,items,kind){let el=$(container);el.innerHTML="";items.forEach((t,i)=>{let l=document.createElement("label");l.className="check";let c=document.createElement("input");c.type="checkbox";c.checked=data.people[current][kind].includes(i);c.onchange=()=>{let p=data.people[current],a=p[kind];p[kind]=c.checked?[...a,i]:a.filter(x=>x!==i);if(kind==="pre")p.preSigned=false;else p.postSigned=false;persist();refresh()};let s=document.createElement("span");s.textContent=t;l.append(c,s);el.append(l)})}
+function canvasSetup(id,field){let c=$(id),ctx=c.getContext("2d");ctx.lineWidth=4;ctx.lineCap="round";ctx.lineJoin="round";ctx.strokeStyle="#172b3a";function pos(e){let r=c.getBoundingClientRect();return{x:(e.clientX-r.left)*c.width/r.width,y:(e.clientY-r.top)*c.height/r.height}}c.onpointerdown=e=>{drawing=true;last=pos(e);try{c.setPointerCapture(e.pointerId)}catch(_){}ctx.beginPath();ctx.moveTo(last.x,last.y);ctx.lineTo(last.x+.01,last.y);ctx.stroke()};c.onpointermove=e=>{if(!drawing)return;let p=pos(e);ctx.beginPath();ctx.moveTo(last.x,last.y);ctx.lineTo(p.x,p.y);ctx.stroke();last=p};["pointerup","pointercancel","pointerleave"].forEach(ev=>c.addEventListener(ev,()=>{if(drawing){drawing=false;let p=data.people[current];p[field]=c.toDataURL("image/png");if(field==="preSig")p.preSigned=false;else p.postSigned=false;persist();refresh()}}))}
 function ink(id){let c=$(id),d=c.getContext("2d").getImageData(0,0,c.width,c.height).data;for(let i=3;i<d.length;i+=4)if(d[i])return true;return false}
-function clearSig(id,field){let c=$(id);c.getContext("2d").clearRect(0,0,c.width,c.height);data.people[current][field]="";persist();refresh()}
-function restoreSig(id,src){let c=$(id),ctx=c.getContext("2d");ctx.clearRect(0,0,c.width,c.height);if(!src)return;let im=new Image();im.onload=()=>ctx.drawImage(im,0,0,c.width,c.height);im.src=src}
-function switchPerson(k){current=k;$("tabA").className=k==="A"?"":"secondary";$("tabB").className=k==="B"?"":"secondary";$("who").textContent=displayName(k)+" の入力";$("preConfirm").checked=false;$("postConfirm").checked=false;$("notes").value=data.people[k].notes||"";checks("preChecks",PRE,"pre");checks("postChecks",POST,"post");restoreSig("preCanvas",data.people[k].preSig);restoreSig("postCanvas",data.people[k].postSig);$("preStatus").textContent=data.people[k].preSigned?"保存済み":"未確認";$("postStatus").textContent=data.people[k].postSigned?"保存済み":"未回答";$("postSection").classList.add("hidden");$("postGate").classList.add("hidden");refresh()}
-function refresh(){let p=data.people[current];$("savePre").disabled=p.pre.length!==PRE.length||!$("preConfirm").checked||!ink("preCanvas");$("savePost").disabled=!$("postConfirm").checked||!ink("postCanvas");let both=data.people.A.preSigned&&data.people.B.preSigned;$("funStage").classList.toggle("hidden",!both);renderRecord()}
+function clearSig(id,field){let c=$(id);c.getContext("2d").clearRect(0,0,c.width,c.height);let p=data.people[current];p[field]="";if(field==="preSig")p.preSigned=false;else p.postSigned=false;persist();refresh()}
+function restoreSig(id,src){let c=$(id),ctx=c.getContext("2d");ctx.clearRect(0,0,c.width,c.height);if(!src)return;let im=new Image();im.onload=()=>{ctx.drawImage(im,0,0,c.width,c.height);refresh()};im.src=src}
+function switchPerson(k){
+ current=k;const p=data.people[k];
+ $("tabA").className=k==="A"?"":"secondary";$("tabB").className=k==="B"?"":"secondary";
+ $("tabA").textContent=(data.names.A||"A側")+(data.names.A?" の入力":"の入力");$("tabB").textContent=(data.names.B||"B側")+(data.names.B?" の入力":"の入力");
+ $("postStatus").dataset.dirty="";$("preConfirm").checked=!!p.preSigned;$("postConfirm").checked=!!p.postSigned;$("notes").value=p.notes||"";
+ checks("preChecks",PRE,"pre");checks("postChecks",POST,"post");
+ restoreSig("preCanvas",p.preSig);restoreSig("postCanvas",p.postSig);refresh();
+}
+function refresh(){
+ const p=data.people[current],st=stage();
+ $("savePre").disabled=!(p.pre.length===PRE.length&&PRE.every((_,i)=>p.pre.includes(i))&&$("preConfirm").checked&&ink("preCanvas"));
+ $("savePost").disabled=!$("postConfirm").checked||!ink("postCanvas");
+ $("who").textContent=displayName(current)+" の入力";$("whoPost").textContent=displayName(current)+" の事後確認";
+ $("preStatus").textContent=p.preSigned?"保存済み":"未保存（全項目の確認・署名・保存が必要です）";
+ if($("postStatus").dataset.dirty!=="1")$("postStatus").textContent=p.postSigned?"保存済み":"未回答・未保存";
+ const a=preComplete(data.people.A),b=preComplete(data.people.B);
+ $("preProgress").textContent=`事前確認の保存状況：${displayName("A")}＝${a?"完了":"未完了"} ／ ${displayName("B")}＝${b?"完了":"未完了"}（両方そろうと次の画面が表示されます）`;
+ document.body.classList.toggle("stage-fun",st==="fun");
+ $("tabs").classList.toggle("hidden",st==="fun");
+ $("preSection").classList.toggle("hidden",st!=="pre");
+ $("funStage").classList.toggle("hidden",st!=="fun");
+ $("postSection").classList.toggle("hidden",st!=="post");
+ $("backFunFromPre").classList.toggle("hidden",!bothPre());
+ renderRecord();
+}
+
+/* ---------- 記録データ（画面・JPEG・PDF 共通） ---------- */
+function fmtDate(s){try{return new Date(s).toLocaleString("ja-JP")}catch(e){return s||""}}
+function recordModel(){
+ const A=data.people.A,B=data.people.B,nA=displayName("A"),nB=displayName("B");
+ const T=v=>({t:"text",v:String(v)}),S=(on,a,b)=>({t:"status",on:!!on,onL:a,offL:b}),G=s=>({t:"sig",src:s||""});
+ return{
+  title:"PAIR CONSENT — 相互確認記録",
+  meta:[["セッション",data.sessionName||"（名称なし）"],["作成日時",fmtDate(data.createdAt)]],
+  tables:[
+   {title:"事前確認",head:["確認項目",nA,nB],rows:PRE.map((t,i)=>[T(`${i+1}. ${t}`),S(A.pre.includes(i),"確認済み","未確認"),S(B.pre.includes(i),"確認済み","未確認")])},
+   {title:"事後の振り返り（任意）",head:["確認項目",nA,nB],rows:POST.map((t,i)=>[T(`${i+1}. ${t}`),S(A.post.includes(i),"回答あり","未回答"),S(B.post.includes(i),"回答あり","未回答")])},
+   {title:"保存状況・署名",head:["項目",nA,nB],rows:[
+     [T("事前確認の保存"),S(A.preSigned,"保存済み","未完了"),S(B.preSigned,"保存済み","未完了")],
+     [T("事後確認の保存"),S(A.postSigned,"保存済み","未回答"),S(B.postSigned,"保存済み","未回答")],
+     [T("事前署名"),G(A.preSig),G(B.preSig)],
+     [T("事後署名"),G(A.postSig),G(B.postSig)]]},
+   {title:"今後の対応・話し合いたいこと",head:["項目",nA,nB],rows:[[T("記載内容"),T(A.notes||"（記載なし）"),T(B.notes||"（記載なし）")]]}
+  ],
+  foot:DISCLAIMER
+ };
+}
 function renderRecord(){
- const a=data.people.A,b=data.people.B;
- let rows=PRE.map((t,i)=>`<tr><td>${i+1}. ${esc(t)}</td><td class="center">${a.pre.includes(i)?"✓":"—"}</td><td class="center">${b.pre.includes(i)?"✓":"—"}</td></tr>`).join("");
- let post=POST.map((t,i)=>`<tr><td>${i+1}. ${esc(t)}</td><td class="center">${a.post.includes(i)?"回答":"—"}</td><td class="center">${b.post.includes(i)?"回答":"—"}</td></tr>`).join("");
- const sig=(src)=>src?`<img src="${src}" alt="署名画像" style="max-width:100%;height:72px;object-fit:contain">`:"<span class='muted'>署名なし</span>";
- $("record").innerHTML=`<p><b>セッション：</b>${esc(data.sessionName||"（名称なし）")}　<b>作成：</b>${new Date(data.createdAt).toLocaleString("ja-JP")}</p>
- <div class="table-wrap"><table><thead><tr><th>事前確認項目</th><th class="center">${esc(displayName("A"))}</th><th class="center">${esc(displayName("B"))}</th></tr></thead><tbody>${rows}</tbody></table></div>
- <h3>事後の振り返り</h3><div class="table-wrap"><table><thead><tr><th>確認項目</th><th class="center">${esc(displayName("A"))}</th><th class="center">${esc(displayName("B"))}</th></tr></thead><tbody>${post}</tbody></table></div>
- <h3>確認・署名状況</h3><div class="table-wrap"><table><thead><tr><th>項目</th><th>${esc(displayName("A"))}</th><th>${esc(displayName("B"))}</th></tr></thead><tbody>
- <tr><td>事前確認の保存</td><td>${a.preSigned?"保存済み":"未完了"}</td><td>${b.preSigned?"保存済み":"未完了"}</td></tr>
- <tr><td>事後確認の保存</td><td>${a.postSigned?"保存済み":"未回答"}</td><td>${b.postSigned?"保存済み":"未回答"}</td></tr>
- <tr><td>事前署名</td><td>${sig(a.preSig)}</td><td>${sig(b.preSig)}</td></tr>
- <tr><td>事後署名</td><td>${sig(a.postSig)}</td><td>${sig(b.postSig)}</td></tr>
- </tbody></table></div>
- <h3>今後の対応・話し合いたいこと</h3>
- <div class="table-wrap"><table><thead><tr><th>${esc(displayName("A"))}</th><th>${esc(displayName("B"))}</th></tr></thead><tbody><tr><td>${esc(a.notes||"（記載なし）")}</td><td>${esc(b.notes||"（記載なし）")}</td></tr></tbody></table></div>
- <p class="muted">この記録は本人性、自由意思、個々の行為への同意、法的責任の有無を確定・証明するものではありません。相手の意思はいつでも変わり得ます。</p>`;
+ if(!data.createdAt){$("record").innerHTML="";return}
+ const m=recordModel();
+ const cell=c=>c.t==="status"?`<td><span class="${c.on?"st-on":"st-off"}">${c.on?"✓ "+esc(c.onL):esc(c.offL)}</span></td>`:c.t==="sig"?`<td>${c.src?`<img src="${c.src}" alt="署名画像">`:'<span class="st-off">署名なし</span>'}</td>`:`<td>${esc(c.v).replace(/\n/g,"<br>")}</td>`;
+ $("record").innerHTML=`<p>${m.meta.map(x=>`<b>${esc(x[0])}：</b>${esc(x[1])}`).join("　")}</p>`+m.tables.map(t=>`<h3>${esc(t.title)}</h3><table class="rec-table"><colgroup><col style="width:42%"><col style="width:29%"><col style="width:29%"></colgroup><thead><tr>${t.head.map(h=>`<th scope="col">${esc(h)}</th>`).join("")}</tr></thead><tbody>${t.rows.map(r=>`<tr>${r.map(cell).join("")}</tr>`).join("")}</tbody></table>`).join("")+`<p class="muted">${esc(m.foot)}</p>`;
 }
-function saveFile(blob,name){let u=URL.createObjectURL(blob),a=document.createElement("a");a.href=u;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(u),2000)}
-function recordCanvas(){
- const scale=2,W=1200,pad=46,lineH=32,ctxCanvas=document.createElement("canvas"),ctx=ctxCanvas.getContext("2d");
- const lines=[];const wrap=(s,max=68)=>{let cur="";for(let ch of s){if(ctx.measureText(cur+ch).width>max*16){lines.push(cur);cur=ch}else cur+=ch}lines.push(cur)};
- ctx.font="22px sans-serif";
- const a=data.people.A,b=data.people.B;
- lines.push("PAIR CONSENT — 相互確認記録",`セッション：${data.sessionName||"（名称なし）"}`,`作成日時：${new Date(data.createdAt).toLocaleString("ja-JP")}`,"");
- lines.push(`事前確認　| ${displayName("A")} | ${displayName("B")}`);
- PRE.forEach((t,i)=>wrap(`${i+1}. ${t} | ${a.pre.includes(i)?"✓":"—"} | ${b.pre.includes(i)?"✓":"—"}`));
- lines.push("","事後の振り返り");
- POST.forEach((t,i)=>wrap(`${i+1}. ${t} | ${a.post.includes(i)?"回答":"—"} | ${b.post.includes(i)?"回答":"—"}`));
- lines.push("","署名・保存状況");
- lines.push(`${displayName("A")}：事前 ${a.preSigned?"保存済み":"未完了"} / 事後 ${a.postSigned?"保存済み":"未回答"}`);
- lines.push(`${displayName("B")}：事前 ${b.preSigned?"保存済み":"未完了"} / 事後 ${b.postSigned?"保存済み":"未回答"}`);
- lines.push("","今後の対応・話し合いたいこと");
- wrap(`${displayName("A")}：${a.notes||"（記載なし）"}`);
- wrap(`${displayName("B")}：${b.notes||"（記載なし）"}`);
- const sigHeight=110;
- ctxCanvas.width=W*scale;ctxCanvas.height=(pad*2+lines.length*lineH+sigHeight*2+80)*scale;
- ctx.scale(scale,scale);ctx.fillStyle="#fff";ctx.fillRect(0,0,W,ctxCanvas.height/scale);ctx.fillStyle="#172b3a";
- let y=pad+lineH;lines.forEach((s,i)=>{ctx.font=i===0?"bold 30px sans-serif":"21px sans-serif";ctx.fillText(s,pad,y);y+=lineH});
- function drawSig(src,label){ctx.font="bold 20px sans-serif";ctx.fillText(label,pad,y);y+=8;if(src){let im=new Image();}y+=sigHeight}
- // Draw signature images synchronously once loaded via Promise in export handler.
- return {canvas:ctxCanvas, signatureY: pad+lines.length*lineH+12};
+
+/* ---------- JPEG / PDF 共通の表レイアウトエンジン ---------- */
+const FONT='"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP","Noto Sans CJK JP","Yu Gothic","Meiryo",sans-serif';
+const EX={W:840,M:20,TW:800,cols:[340,230,230],fs:25,lh:36,pad:12,sigH:96,pageH:1188,top:36,bottom:58,ink:"#172b3a",line:"#6b7c88",head:"#d7ebe6",itemBg:"#f6f9fa"};
+const NOSTART="、。，．・：；？！）」』】〕〉》ゞヽヾ々ーぁぃぅぇぉっゃゅょァィゥェォッャュョ,.:;!?)]}%";
+function wrapText(ctx,text,maxW){
+ const out=[];
+ String(text).split("\n").forEach(par=>{
+  const toks=par.match(/[A-Za-z0-9]+|[\s\S]/gu)||[];let cur="";
+  const flush=()=>{out.push(cur.replace(/\s+$/,""));cur=""};
+  for(const t of toks){
+   if(/^\s$/.test(t)&&cur==="")continue;
+   if(ctx.measureText(cur+t).width<=maxW){cur+=t;continue}
+   if(cur!==""&&t.length===1&&NOSTART.includes(t)){const a=Array.from(cur),lc=a.pop();if(a.length){cur=a.join("");flush();cur=lc+t;continue}}
+   if(cur!=="")flush();
+   if(/^\s$/.test(t))continue;
+   if(ctx.measureText(t).width<=maxW){cur=t;continue}
+   for(const ch of t){if(cur!==""&&ctx.measureText(cur+ch).width>maxW)flush();cur+=ch}
+  }
+  out.push(cur.replace(/\s+$/,""));
+ });
+ return out;
 }
-async function exportJPEG(){
- let {canvas,signatureY}=recordCanvas(),ctx=canvas.getContext("2d"),scale=2,pad=46;
- let y=signatureY;
- const a=data.people.A,b=data.people.B;
- async function add(src,label,x){
-  ctx.font="bold 20px sans-serif";ctx.fillStyle="#172b3a";ctx.fillText(label,x,y);
-  if(src){let im=new Image();await new Promise(res=>{im.onload=res;im.onerror=res;im.src=src});if(im.complete&&im.naturalWidth)ctx.drawImage(im,x,y+12,360,75)}
+function loadImg(src){return new Promise(res=>{if(!src)return res(null);const im=new Image();im.onload=()=>res(im);im.onerror=()=>res(null);im.src=src})}
+function cropInk(im){
+ const c=document.createElement("canvas");c.width=im.naturalWidth;c.height=im.naturalHeight;const x=c.getContext("2d");x.drawImage(im,0,0);
+ const d=x.getImageData(0,0,c.width,c.height).data;let x0=c.width,y0=c.height,x1=-1,y1=-1;
+ for(let y=0;y<c.height;y++)for(let xx=0;xx<c.width;xx++){if(d[(y*c.width+xx)*4+3]>8){if(xx<x0)x0=xx;if(xx>x1)x1=xx;if(y<y0)y0=y;if(y>y1)y1=y}}
+ if(x1<0)return null;const p=8;x0=Math.max(0,x0-p);y0=Math.max(0,y0-p);x1=Math.min(c.width-1,x1+p);y1=Math.min(c.height-1,y1+p);
+ const o=document.createElement("canvas");o.width=x1-x0+1;o.height=y1-y0+1;o.getContext("2d").drawImage(c,x0,y0,o.width,o.height,0,0,o.width,o.height);return o;
+}
+function layoutExport(mc,model,imgs,paged){
+ const E=EX,pages=[[]],limit=paged?E.pageH-E.bottom:1e9;let y=E.top,topAfter=E.top;
+ const add=fn=>pages[pages.length-1].push(fn),np=()=>{pages.push([]);y=E.top;topAfter=E.top};
+ const font=(sz,b)=>`${b?"bold ":""}${sz}px ${FONT}`;
+ function textBlock(lines,sz,bold,color,lh){lines.forEach(s=>{if(y+lh>limit)np();const yy=y;add(c=>{c.font=font(sz,bold);c.fillStyle=color;c.textBaseline="middle";c.fillText(s,E.M,yy+lh/2)});y+=lh})}
+ function prepRow(cells,isHead){
+  const cs=cells.map((c,i)=>{
+   const w=E.cols[i]-2*E.pad;
+   if(c.t==="sig"){return{t:"sig",im:imgs.get(c.src)||null,h:E.sigH}}
+   mc.font=font(E.fs,isHead||c.bold);
+   if(c.t==="status"){const lines=wrapText(mc,c.on?c.onL:c.offL,c.on?w-34:w);return{t:"status",on:c.on,lines,h:lines.length*E.lh}}
+   const lines=wrapText(mc,c.v,w);return{t:"text",lines,bold:isHead,h:lines.length*E.lh};
+  });
+  return{cells:cs,head:isHead,h:Math.max(...cs.map(c=>c.h))+2*E.pad};
  }
- await add(a.preSig,displayName("A")+" 事前署名",pad);
- await add(b.preSig,displayName("B")+" 事前署名",canvas.width/2+pad/2);
- y+=105;
- await add(a.postSig,displayName("A")+" 事後署名",pad);
- await add(b.postSig,displayName("B")+" 事後署名",canvas.width/2+pad/2);
- canvas.toBlob(blob=>blob&&saveFile(blob,"pair-consent-record.jpg"),"image/jpeg",.94);
+ function drawRow(c,row,yy){
+  let x=E.M;
+  row.cells.forEach((cell,i)=>{
+   const w=E.cols[i];
+   c.fillStyle=row.head?E.head:(i===0?E.itemBg:"#fff");c.fillRect(x,yy,w,row.h);
+   c.strokeStyle=E.line;c.lineWidth=2;c.strokeRect(x,yy,w,row.h);
+   c.textBaseline="middle";
+   if(cell.t==="sig"){
+    if(cell.im){const bw=w-2*E.pad,bh=row.h-2*E.pad,s=Math.min(bw/cell.im.width,bh/cell.im.height,1),dw=cell.im.width*s,dh=cell.im.height*s;c.drawImage(cell.im,x+(w-dw)/2,yy+(row.h-dh)/2,dw,dh)}
+    else{c.font=font(E.fs,false);c.fillStyle="#7b8891";c.fillText("署名なし",x+E.pad,yy+row.h/2)}
+   }else if(cell.t==="status"){
+    c.font=font(E.fs,false);
+    if(cell.on){c.strokeStyle="#1c6b43";c.lineWidth=4;c.lineCap="round";c.lineJoin="round";c.beginPath();c.moveTo(x+E.pad+2,yy+E.pad+E.lh/2+1);c.lineTo(x+E.pad+10,yy+E.pad+E.lh/2+9);c.lineTo(x+E.pad+24,yy+E.pad+E.lh/2-9);c.stroke();c.fillStyle="#1c6b43"}
+    else c.fillStyle="#7b8891";
+    const tx=x+E.pad+(cell.on?34:0);cell.lines.forEach((s,k)=>c.fillText(s,tx,yy+E.pad+k*E.lh+E.lh/2));
+   }else{
+    c.font=font(E.fs,cell.bold);c.fillStyle=E.ink;cell.lines.forEach((s,k)=>c.fillText(s,x+E.pad,yy+E.pad+k*E.lh+E.lh/2));
+   }
+   x+=w;
+  });
+ }
+ function splitRow(row,n){
+  const part=(f)=>{const cs=row.cells.map(c=>({...c,lines:f(c.lines)}));cs.forEach(c=>c.h=Math.max(1,c.lines.length)*E.lh);return{cells:cs,head:false,h:Math.max(...cs.map(c=>c.h))+2*E.pad}};
+  return[part(l=>l.slice(0,n)),part(l=>l.length>n?l.slice(n):[""])];
+ }
+ // 文書見出し
+ mc.font=font(34,true);textBlock(wrapText(mc,model.title,E.TW),34,true,E.ink,46);
+ mc.font=font(22,false);model.meta.forEach(m=>textBlock(wrapText(mc,`${m[0]}：${m[1]}`,E.TW),22,false,"#3c4d58",32));
+ y+=14;
+ model.tables.forEach(tbl=>{
+  const head=prepRow(tbl.head.map(s=>({t:"text",v:s})),true),rows=tbl.rows.map(r=>prepRow(r,false)),titleH=50;
+  const hdr=()=>{const yy=y;add(c=>drawRow(c,head,yy));y+=head.h;topAfter=y};
+  if(y+titleH+head.h+Math.min(rows[0].h,4*E.lh+2*E.pad)>limit)np();
+  {const yy=y;add(c=>{c.fillStyle="#236b61";c.fillRect(E.M,yy+8,8,32);c.font=font(28,true);c.fillStyle=E.ink;c.textBaseline="middle";c.fillText(tbl.title,E.M+20,yy+25)});y+=titleH}
+  hdr();
+  rows.forEach(r0=>{
+   let row=r0;
+   for(;;){
+    if(y+row.h<=limit){const yy=y,rr=row;add(c=>drawRow(c,rr,yy));y+=row.h;break}
+    const usable=limit-E.top-head.h;
+    const splittable=row.cells.every(c=>c.t==="text");
+    if(row.h<=usable||!splittable){if(y>topAfter){np();hdr();continue}const yy=y,rr=row;add(c=>drawRow(c,rr,yy));y+=row.h;break}
+    const cap=Math.floor((limit-y-2*E.pad)/E.lh);
+    if(cap<2){np();hdr();continue}
+    const[a,b]=splitRow(row,cap);const yy=y;add(c=>drawRow(c,a,yy));y+=a.h;np();hdr();row=b;
+   }
+  });
+  y+=26;
+ });
+ mc.font=font(20,false);textBlock(wrapText(mc,model.foot,E.TW),20,false,"#62727d",28);
+ return{pages,endY:y};
 }
-function pdfHTML(){let clone=$("record").cloneNode(true);return `<!doctype html><html lang="ja"><meta charset="utf-8"><title>PAIR CONSENT 記録</title><style>body{font-family:-apple-system,sans-serif;color:#172b3a;padding:20px}table{width:100%;border-collapse:collapse;font-size:11px;page-break-inside:auto}td,th{border:1px solid #ccd5db;padding:6px;vertical-align:top}th{background:#edf3f2}img{max-height:65px;max-width:180px}h2,h3{margin:18px 0 8px}.muted{font-size:10px;color:#555}</style><h1>PAIR CONSENT — 相互確認記録</h1>${clone.innerHTML}<script>window.onload=()=>window.print()<\/script></html>`}
-$("create").onclick=()=>{data={createdAt:new Date().toISOString(),sessionName:$("sessionName").value,names:{A:$("nameA").value.trim(),B:$("nameB").value.trim()},people:{A:blankPerson(),B:blankPerson()}};persist();$("workflow").classList.remove("hidden");$("sessionInfo").textContent="端末内に保存しました。";switchPerson("A")};
-$("reset").onclick=()=>{localStorage.removeItem(KEY);data={createdAt:null,sessionName:"",names:{A:"",B:""},people:{A:blankPerson(),B:blankPerson()}};$("workflow").classList.add("hidden");$("sessionInfo").textContent="セッションはまだ作成されていません。"};
+async function renderExport(paged){
+ const E=EX,model=recordModel();
+ const srcs=new Set();model.tables.forEach(t=>t.rows.forEach(r=>r.forEach(c=>{if(c.t==="sig"&&c.src)srcs.add(c.src)})));
+ const store=new Map();
+ for(const s of srcs){const im=await loadImg(s);if(im){const cr=cropInk(im);if(cr)store.set(s,cr)}}
+ const mc=document.createElement("canvas").getContext("2d");
+ const lay=layoutExport(mc,model,store,paged);
+ const total=lay.pages.length,H0=paged?E.pageH:Math.ceil(lay.endY+E.top);
+ let s=Math.min(2,Math.sqrt(12e6/(E.W*H0)));
+ const out=[];
+ lay.pages.forEach((ops,pi)=>{
+  const cv=document.createElement("canvas");cv.width=Math.round(E.W*s);cv.height=Math.round(H0*s);
+  const c=cv.getContext("2d");c.setTransform(cv.width/E.W,0,0,cv.height/H0,0,0);
+  c.fillStyle="#fff";c.fillRect(0,0,E.W,H0);
+  ops.forEach(fn=>fn(c));
+  if(paged){c.font=`20px ${FONT}`;c.fillStyle="#62727d";c.textBaseline="middle";c.textAlign="center";c.fillText(`PAIR CONSENT 相互確認記録　${pi+1} / ${total}`,E.W/2,E.pageH-30);c.textAlign="left"}
+  out.push(cv);
+ });
+ return out;
+}
+function canvasBlob(cv,type,q){return new Promise((res,rej)=>cv.toBlob(b=>b?res(b):rej(new Error("画像化に失敗しました")),type,q))}
+async function buildPDF(cvs){
+ const enc=new TextEncoder(),chunks=[],offs=[];let len=0;
+ const push=d=>{const u=typeof d==="string"?enc.encode(d):d;chunks.push(u);len+=u.length};
+ const PW=595.28,PH=841.89,n=cvs.length;
+ push("%PDF-1.4\n%\u00e2\u00e3\u00cf\u00d3\n");
+ offs[1]=len;push("1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj\n");
+ offs[2]=len;push(`2 0 obj\n<< /Type /Pages /Kids [${cvs.map((_,i)=>`${3+3*i} 0 R`).join(" ")}] /Count ${n} >>\nendobj\n`);
+ for(let i=0;i<n;i++){
+  const pid=3+3*i,cid=pid+1,iid=pid+2,jpg=new Uint8Array(await (await canvasBlob(cvs[i],"image/jpeg",.92)).arrayBuffer());
+  offs[pid]=len;push(`${pid} 0 obj\n<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${PW} ${PH}] /Resources << /XObject << /Im0 ${iid} 0 R >> >> /Contents ${cid} 0 R >>\nendobj\n`);
+  const cs=`q ${PW} 0 0 ${PH} 0 0 cm /Im0 Do Q`;
+  offs[cid]=len;push(`${cid} 0 obj\n<< /Length ${cs.length} >>\nstream\n${cs}\nendstream\nendobj\n`);
+  offs[iid]=len;push(`${iid} 0 obj\n<< /Type /XObject /Subtype /Image /Width ${cvs[i].width} /Height ${cvs[i].height} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${jpg.length} >>\nstream\n`);push(jpg);push("\nendstream\nendobj\n");
+ }
+ const N=3+3*n,xo=len;let x=`xref\n0 ${N}\n0000000000 65535 f \n`;for(let i=1;i<N;i++)x+=String(offs[i]).padStart(10,"0")+" 00000 n \n";
+ push(x+`trailer\n<< /Size ${N} /Root 1 0 R >>\nstartxref\n${xo}\n%%EOF\n`);
+ return new Blob(chunks,{type:"application/pdf"});
+}
+function saveFile(blob,name){let u=URL.createObjectURL(blob),a=document.createElement("a");a.href=u;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),4000)}
+async function deliver(blob,name){
+ const touch=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
+ try{const f=new File([blob],name,{type:blob.type});if(touch&&navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f],title:name});return}}catch(e){if(e&&e.name==="AbortError")return}
+ saveFile(blob,name);
+}
+function exportMsg(s){$("exportStatus").textContent=s}
+async function exportJPEG(){
+ try{exportMsg("JPEGを作成中…");const cvs=await renderExport(false);await deliver(await canvasBlob(cvs[0],"image/jpeg",.92),"pair-consent-record.jpg");exportMsg("JPEGを書き出しました。")}catch(e){exportMsg("JPEGの書き出しに失敗しました："+(e&&e.message||e))}
+}
+async function exportPDF(){
+ try{exportMsg("PDFを作成中…");const cvs=await renderExport(true);await deliver(await buildPDF(cvs),"pair-consent-record.pdf");exportMsg(`PDFを書き出しました（${cvs.length}ページ）。`)}catch(e){exportMsg("PDFの書き出しに失敗しました："+(e&&e.message||e))}
+}
+
+/* ---------- JSON 読み込み ---------- */
+function importJSON(file){
+ const r=new FileReader();
+ r.onload=()=>{
+  let n=null;try{n=normalize(JSON.parse(String(r.result)))}catch(e){}
+  if(!n){exportMsg("JSONを読み込めませんでした（形式が正しくありません）。");return}
+  if(!(Date.now()-Date.parse(n.createdAt)<TTL)){exportMsg("作成から30日を超えているデータは読み込めません。");return}
+  if(data.createdAt&&!confirm("現在のセッションを、読み込んだデータで置き換えますか？"))return;
+  data=n;persist();applyDataToInputs();$("sessionInfo").textContent="JSONを読み込みました。";$("workflow").classList.remove("hidden");switchPerson("A");exportMsg("JSONを読み込みました。");
+ };
+ r.onerror=()=>exportMsg("ファイルを読み込めませんでした。");
+ r.readAsText(file);
+}
+
+/* ---------- イベント ---------- */
+$("create").onclick=()=>{
+ if(data.createdAt&&!confirm("現在のセッションを破棄して、新しく開始しますか？"))return;
+ data={createdAt:new Date().toISOString(),sessionName:$("sessionName").value,names:{A:$("nameA").value.trim(),B:$("nameB").value.trim()},people:{A:blankPerson(),B:blankPerson()},ui:{stage:"fun"}};
+ const ok=persist();$("workflow").classList.remove("hidden");$("sessionInfo").textContent=ok?"端末内に保存しました。":"⚠ このブラウザでは保存できませんでした（プライベートモード等）。この画面を閉じると記録は失われます。";switchPerson("A");
+};
+$("reset").onclick=()=>{if(data.createdAt&&!confirm("セッションと保存データを消去しますか？"))return;try{localStorage.removeItem(KEY)}catch(e){}data=blankData();current="A";$("workflow").classList.add("hidden");document.body.classList.remove("stage-fun");$("sessionInfo").textContent="セッションはまだ作成されていません。";$("record").innerHTML=""};
+[["sessionName",v=>data.sessionName=v],["nameA",v=>data.names.A=v.trim()],["nameB",v=>data.names.B=v.trim()]].forEach(([id,f])=>$(id).addEventListener("input",()=>{if(!data.createdAt)return;f($(id).value);persist();$("tabA").textContent=(data.names.A||"A側")+(data.names.A?" の入力":"の入力");$("tabB").textContent=(data.names.B||"B側")+(data.names.B?" の入力":"の入力");refresh()}));
 $("tabA").onclick=()=>switchPerson("A");$("tabB").onclick=()=>switchPerson("B");
 $("preConfirm").onchange=refresh;$("postConfirm").onchange=refresh;
+$("notes").addEventListener("input",()=>{$("postStatus").dataset.dirty="1";$("postStatus").textContent="未保存の変更があります"});
 $("clearPre").onclick=()=>clearSig("preCanvas","preSig");$("clearPost").onclick=()=>clearSig("postCanvas","postSig");
-$("savePre").onclick=()=>{data.people[current].preSigned=true;data.people[current].preSig=$("preCanvas").toDataURL("image/png");persist();$("preStatus").textContent="保存済み";refresh();if(data.people.A.preSigned&&data.people.B.preSigned){$("funStage").classList.remove("hidden");$("funStage").scrollIntoView({behavior:"smooth",block:"center"})}};
-$("openPost").onclick=()=>{$("funStage").classList.add("hidden");$("postGate").classList.remove("hidden");$("postGate").scrollIntoView({behavior:"smooth",block:"center"})};
-$("showPost").onclick=()=>{$("postSection").classList.remove("hidden");$("postSection").scrollIntoView({behavior:"smooth",block:"start"})};
-$("savePost").onclick=()=>{data.people[current].postSigned=true;data.people[current].postSig=$("postCanvas").toDataURL("image/png");data.people[current].notes=$("notes").value;persist();$("postStatus").textContent="保存済み";refresh()};
-$("exportPDF").onclick=()=>{let w=window.open("","_blank");if(!w){alert("ポップアップがブロックされました。ブラウザの設定を確認してください。");return}w.document.open();w.document.write(pdfHTML());w.document.close()};
-$("exportJPEG").onclick=exportJPEG;
+$("savePre").onclick=()=>{
+ const p=data.people[current];
+ if(!(PRE.every((_,i)=>p.pre.includes(i))&&$("preConfirm").checked&&ink("preCanvas")))return;
+ p.preSigned=true;p.preSig=$("preCanvas").toDataURL("image/png");
+ if(bothPre())data.ui.stage="fun";
+ const ok=persist();refresh();
+ if(!ok)$("preStatus").textContent="⚠ 保存済み（この画面内のみ）。ブラウザ保存に失敗したため、再読み込みで消えます。";
+ if(stage()==="fun")window.scrollTo({top:0,behavior:"smooth"});
+};
+$("openPost").onclick=()=>setStage("post");
+$("backFunFromPost").onclick=()=>setStage("fun");
+$("backFunFromPre").onclick=()=>setStage("fun");
+$("backPreFromFun").onclick=()=>setStage("pre");
+$("savePost").onclick=()=>{const p=data.people[current];p.postSigned=true;p.postSig=$("postCanvas").toDataURL("image/png");p.notes=$("notes").value;$("postStatus").dataset.dirty="";const ok=persist();refresh();if(!ok)$("postStatus").textContent="⚠ 保存済み（この画面内のみ）。ブラウザ保存に失敗しました。"};
+$("exportPDF").onclick=exportPDF;$("exportJPEG").onclick=exportJPEG;
 $("exportJSON").onclick=()=>saveFile(new Blob([JSON.stringify(data,null,2)],{type:"application/json"}),"pair-consent-record.json");
+$("importFile").onchange=e=>{const f=e.target.files&&e.target.files[0];if(f)importJSON(f);e.target.value=""};
 canvasSetup("preCanvas","preSig");canvasSetup("postCanvas","postSig");expireCheck();load();
 </script></body></html>
